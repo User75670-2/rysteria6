@@ -235,7 +235,8 @@ void tick_return_to_higher_zone(EntityIdx entity,
     }
     struct rr_component_mob *mob = rr_simulation_get_mob(simulation, entity);
     if (mob->rarity < rr_rarity_id_ultimate)
-        return;
+        return;                                           //  e    l
+    int whichRarity = mob->rarity == rr_rarity_id_ultimate ? 24 : 32;
     struct rr_component_arena *arena =
         rr_simulation_get_arena(simulation, physical->arena);
     int32_t grid_x = rr_fclamp(physical->x / arena->maze->grid_size,
@@ -244,7 +245,7 @@ void tick_return_to_higher_zone(EntityIdx entity,
                                0, arena->maze->maze_dim - 1);
     struct rr_maze_grid *grid =
         rr_component_arena_get_grid(arena, grid_x, grid_y);
-    if (grid->difficulty >= 1 || grid->value == 0 || (grid->value & 8))
+    if (grid->difficulty >= whichRarity || grid->value == 0 || (grid->value & 8))
         return;
     for (int8_t i = -1; i <= 1; ++i)
         for (int8_t j = -1; j <= 1; ++j)
@@ -255,7 +256,7 @@ void tick_return_to_higher_zone(EntityIdx entity,
                 y < 0 || y >= arena->maze->maze_dim)
                 continue;
             grid = rr_component_arena_get_grid(arena, x, y);
-            if (grid->difficulty < 48)
+            if (grid->difficulty < whichRarity)
                 continue;
             rr_vector_set(&ai->return_pos, x * arena->maze->grid_size,
                           y * arena->maze->grid_size);

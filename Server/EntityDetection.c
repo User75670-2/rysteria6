@@ -320,7 +320,8 @@ uint8_t high_zone_filter(struct rr_simulation *simulation, EntityIdx seeker,
 {
     struct rr_component_mob *mob = rr_simulation_get_mob(simulation, seeker);
     if (mob->rarity < rr_rarity_id_ultimate)
-        return 1;
+        return 1;                                       //    e    l
+    int whichRarity = mob->rarity == rr_rarity_id_ultimate ? 24 : 32;
     struct rr_component_physical *physical =
         rr_simulation_get_physical(simulation, seeker);
     struct rr_component_arena *arena =
@@ -331,7 +332,7 @@ uint8_t high_zone_filter(struct rr_simulation *simulation, EntityIdx seeker,
                                 0, arena->maze->maze_dim - 1);
     struct rr_maze_grid *grid =
         rr_component_arena_get_grid(arena, grid_x, grid_y);
-    if (grid->difficulty < 48)
+    if (grid->difficulty < whichRarity)
         return 1;
     physical = rr_simulation_get_physical(simulation, target);
     arena = rr_simulation_get_arena(simulation, physical->arena);
@@ -340,7 +341,7 @@ uint8_t high_zone_filter(struct rr_simulation *simulation, EntityIdx seeker,
     grid_y = rr_fclamp(physical->y / arena->maze->grid_size,
                        0, arena->maze->maze_dim - 1);
     grid = rr_component_arena_get_grid(arena, grid_x, grid_y);
-    if (grid->difficulty >= 48 || grid->value == 0 || (grid->value & 8))
+    if (grid->difficulty >= whichRarity || grid->value == 0 || (grid->value & 8))
         return 1;
     return 0;
 }

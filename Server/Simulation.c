@@ -102,7 +102,7 @@ uint8_t quetz_zone()
 }
 uint8_t fern_pachy_zone()
 {
-    return rr_frand() > 0.1 ? rr_mob_id_pachycephalosaurus : rr_mob_id_fern;
+    return rr_frand() > 0.3 ? rr_mob_id_pachycephalosaurus : rr_mob_id_fern;
 }
 uint8_t anky_zone()
 {
@@ -127,7 +127,7 @@ uint8_t quetz_trice_zone()
 // x30 tree chance
 uint8_t pachy_rex_tree_zone() {
     return rr_frand() > 
-    0.4 ? rr_mob_id_pachycephalosaurus : rr_frand() > 0.0156 ? rr_mob_id_trex : rr_mob_id_tree;
+    0.4 ? rr_mob_id_pachycephalosaurus : rr_frand() > 0.0078 ? rr_mob_id_trex : rr_mob_id_tree;
 }
 uint8_t pter_fern() {
     return rr_frand() > 0.35 ? rr_mob_id_pteranodon : rr_frand() > 0.15 ? rr_mob_id_trex : rr_mob_id_fern;
@@ -138,6 +138,15 @@ uint8_t trex_dako_pter_zone() {
 uint8_t dako_quetz_zone() {
     return rr_frand() > 0.3 ? rr_mob_id_dakotaraptor : rr_mob_id_quetzalcoatlus;
 }
+uint8_t meteor_pter_anky() {
+    return rr_frand() > 0.995 
+    ? rr_mob_id_meteor 
+    : rr_frand() > 0.705 
+    ? rr_mob_id_ankylosaurus 
+    : rr_frand() > 0.405
+    ? rr_mob_id_pteranodon
+    : ALL_MOBS;
+}
 struct zone
 {
     uint32_t x;
@@ -147,7 +156,7 @@ struct zone
     uint8_t (*spawn_func)();
 };
 
-#define ZONE_POSITION_COUNT 15
+#define ZONE_POSITION_COUNT 16
 
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {9, 38, 4,  2, fern_tree_zone},
@@ -171,6 +180,7 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {15, 26, 2,  3, pter_fern},
     {22, 27, 2,  2, trex_dako_pter_zone},
     {2, 1, 4,  2, dako_quetz_zone},
+    {23, 13, 3, 4, meteor_pter_anky}
 };
 
 static void set_spawn_zones()
@@ -353,7 +363,7 @@ static void despawn_mob(EntityIdx entity, void *_simulation)
 
         if (mob->ticks_to_despawn > 30 * 25)
             mob->ticks_to_despawn = 30 * 25;
-        if (--mob->ticks_to_despawn == 0 && mob->rarity != rr_rarity_id_ultimate )
+        if (--mob->ticks_to_despawn == 0 && mob->rarity < rr_rarity_id_eternal)
         {
             mob->no_drop = 1;
             rr_simulation_request_entity_deletion(this, entity);
