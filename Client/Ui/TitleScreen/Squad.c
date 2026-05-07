@@ -530,19 +530,21 @@ static struct rr_ui_element *squad_code_init(struct rr_game_squad *squad)
 
 struct rr_ui_element *rr_ui_squad_container_init(struct rr_game_squad *squad)
 {
+    struct rr_ui_element *squad_members = rr_ui_h_container_init(
+        rr_ui_container_init(), 0, 10, NULL);
+    for (uint8_t i = 0; i < RR_SQUAD_MEMBER_COUNT; ++i)
+        rr_ui_container_add_element(
+            squad_members, squad_player_container_init(squad, i));
+            
     struct rr_ui_element *this = rr_ui_v_container_init(
         rr_ui_container_init(), 0, 10,
-        rr_ui_h_container_init(rr_ui_container_init(), 0, 10,
-                               squad_player_container_init(squad, 0),
-                               squad_player_container_init(squad, 1),
-                               squad_player_container_init(squad, 2),
-                               squad_player_container_init(squad, 3),
-                               squad_player_container_init(squad, 4),
-                               squad_player_container_init(squad, 5),
-                               squad_player_container_init(squad, 6),
-                               squad_player_container_init(squad, 7),
-                               squad_player_container_init(squad, 8),
-                               squad_player_container_init(squad, 9), NULL),
+        squad_members,
+                // rr_ui_h_container_init(rr_ui_container_init(), 0, 10,
+                //                squad_player_container_init(squad, 0),
+                //                squad_player_container_init(squad, 1),
+                //                squad_player_container_init(squad, 2),
+                //                squad_player_container_init(squad, 3),
+                //                squad_player_container_init(squad, 4), NULL),
         rr_ui_set_justify(
             rr_ui_h_container_init(
                 rr_ui_container_init(), 5, 0,

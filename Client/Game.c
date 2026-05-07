@@ -451,27 +451,39 @@ void rr_game_init(struct rr_game *this)
         ui_not_hidden_and_simulation_ready
         )
     );
-    rr_ui_container_add_element(this->window, rr_ui_link_toggle(
-        rr_ui_pad(
-            rr_ui_v_pad(
-                rr_ui_set_justify(
-                    rr_ui_v_container_init(rr_ui_container_init(), 10, 40,
-                        rr_ui_in_game_player_hud_init(0),
-                        rr_ui_in_game_player_hud_init(1),
-                        rr_ui_in_game_player_hud_init(2),
-                        rr_ui_in_game_player_hud_init(3),
-                        rr_ui_in_game_player_hud_init(4),
-                        rr_ui_in_game_player_hud_init(5),
-                        rr_ui_in_game_player_hud_init(6),
-                        rr_ui_in_game_player_hud_init(7),
-                        rr_ui_in_game_player_hud_init(8),
-                        rr_ui_in_game_player_hud_init(9),
-                        NULL
-                    )
-                , -1, -1)
-            , 100)
-        , 50)
-    , ui_not_hidden_and_simulation_ready));
+    // rr_ui_container_add_element(this->window, rr_ui_link_toggle(
+    //     rr_ui_pad(
+    //         rr_ui_v_pad(
+    //             rr_ui_set_justify(
+    //                 rr_ui_v_container_init(rr_ui_container_init(), 10, 40,
+    //                     rr_ui_in_game_player_hud_init(0),
+    //                     rr_ui_in_game_player_hud_init(1),
+    //                     rr_ui_in_game_player_hud_init(2),
+    //                     rr_ui_in_game_player_hud_init(3),
+    //                     rr_ui_in_game_player_hud_init(4),
+    //                     rr_ui_in_game_player_hud_init(5),
+    //                     rr_ui_in_game_player_hud_init(6),
+    //                     rr_ui_in_game_player_hud_init(7),
+    //                     rr_ui_in_game_player_hud_init(8),
+    //                     rr_ui_in_game_player_hud_init(9),
+    //                     NULL
+    //                 )
+    //             , -1, -1)
+    //         , 100)
+    //     , 50)
+    // , ui_not_hidden_and_simulation_ready));
+        struct rr_ui_element *hud = rr_ui_v_container_init(
+            rr_ui_container_init(), 10, 40, NULL);
+        for (uint8_t i = 0; i < RR_SQUAD_MEMBER_COUNT; ++i)
+            rr_ui_container_add_element(hud, rr_ui_in_game_player_hud_init(i));
+
+        rr_ui_container_add_element(this->window, rr_ui_link_toggle(
+            rr_ui_pad(
+                rr_ui_v_pad(
+                    rr_ui_set_justify(hud, -1, -1),
+                100)
+            , 50)
+        , ui_not_hidden_and_simulation_ready));
     rr_ui_container_add_element(
         this->window,
         rr_ui_link_toggle(
