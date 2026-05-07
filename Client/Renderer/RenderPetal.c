@@ -52,8 +52,8 @@ void rr_component_petal_render(EntityIdx entity, struct rr_game *game,
             petal->id != rr_petal_id_meteor
                 ? &game->default_particle_manager
                 : &game->foreground_particle_manager;
-        float exotic_coeff = petal->rarity == rr_rarity_id_exotic ? 0.5 : petal->rarity == rr_rarity_id_ultimate ? 1 : 1.5;
-        float size_coeff =
+        float exotic_coeff = petal->rarity == rr_rarity_id_exotic ? 0.5 : petal->rarity == rr_rarity_id_ultimate ? 1 : petal->rarity == rr_rarity_id_eternal ? 1.5 : 2;
+                float size_coeff =
             physical->on_title_screen ? physical->radius / 20 : 1;
         float colorful_coeff = petal->id == rr_petal_id_fireball ||
                                petal->id == rr_petal_id_meteor ? 2 : 1;

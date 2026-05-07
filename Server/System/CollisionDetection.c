@@ -154,7 +154,7 @@ static void collapse_arena(EntityIdx entity, void *_captures)
     }
     else if (arena->player_entered)
         --mob->ticks_to_despawn;
-    if (mob->ticks_to_despawn == 0 && mob->rarity != rr_rarity_id_ultimate)
+    if (mob->ticks_to_despawn == 0 && mob->rarity < rr_rarity_id_astral)
         rr_simulation_request_entity_deletion(this, entity);
 }
 

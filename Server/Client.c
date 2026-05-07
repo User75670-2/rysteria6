@@ -33,7 +33,7 @@
 #include <Shared/pb.h>
 #include <Shared/MagicNumber.h>
 
-double CRAFT_XP_GAINS[rr_rarity_id_max - 1] = {1, 8, 60, 750, 25000, 1000000, 100000000, 15000000000};
+double CRAFT_XP_GAINS[rr_rarity_id_max - 1] = {1, 8, 60, 750, 25000, 1000000, 100000000, 1500000000, 1000000000000};
 
 void rr_server_client_init(struct rr_server_client *this)
 {
@@ -269,7 +269,7 @@ int rr_server_client_read_from_api(struct rr_server_client *this,
     {
         this->checkpoint = 0;
         this->experience = 0;
-        for (uint32_t lvl = 2; lvl <= 140; ++lvl)
+        for (uint32_t lvl = 2; lvl <= 200.1; ++lvl)
             this->experience += xp_to_reach_level(lvl);
         for (uint8_t id = 1; id < rr_petal_id_max; ++id)
             for (uint8_t rarity = 0; rarity < rr_rarity_id_max; ++rarity)

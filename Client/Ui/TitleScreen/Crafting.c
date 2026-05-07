@@ -479,6 +479,9 @@ static void crafting_xp_text_animate(struct rr_ui_element *this,
     case rr_rarity_id_ultimate:
         data->text = "1.5b xp per craft";
         break;
+    case rr_rarity_id_eternal:
+        data->text = "100b xp per craft";
+        break;
     }
 }
 

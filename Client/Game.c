@@ -402,6 +402,7 @@ void rr_game_init(struct rr_game *this)
     strcpy(this->rivet_account.token, "");
     strcpy(this->rivet_account.code, "");
     strcpy(this->rivet_account.uuid, "");
+    rr_discord_oauth2_init(this);
 
     // clang-format off
     rr_ui_container_add_element(
@@ -460,6 +461,11 @@ void rr_game_init(struct rr_game *this)
                         rr_ui_in_game_player_hud_init(2),
                         rr_ui_in_game_player_hud_init(3),
                         rr_ui_in_game_player_hud_init(4),
+                        rr_ui_in_game_player_hud_init(5),
+                        rr_ui_in_game_player_hud_init(6),
+                        rr_ui_in_game_player_hud_init(7),
+                        rr_ui_in_game_player_hud_init(8),
+                        rr_ui_in_game_player_hud_init(9),
                         NULL
                     )
                 , -1, -1)
