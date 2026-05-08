@@ -662,7 +662,9 @@ static void petal_modifiers(struct rr_simulation *simulation,
         {
             physical->acceleration_scale +=
                 (0.05 + 0.025 * slot->rarity) * feather_diminish_factor;
-            feather_diminish_factor *= 0.75;
+                    // (0.05) * feather_diminish_factor;
+
+            feather_diminish_factor *= 0.5;
         }
         else if (data->id == rr_petal_id_crest)
         {

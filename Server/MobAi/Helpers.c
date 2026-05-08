@@ -236,7 +236,11 @@ void tick_return_to_higher_zone(EntityIdx entity,
     struct rr_component_mob *mob = rr_simulation_get_mob(simulation, entity);
     if (mob->rarity < rr_rarity_id_ultimate)
         return;                                           //  e    l
-    int whichRarity = mob->rarity == rr_rarity_id_ultimate ? 24 : 32 ;
+    int whichRarity = mob->rarity == rr_rarity_id_ultimate 
+    ? 24 // e
+    : mob->rarity == rr_rarity_id_eternal 
+    ? 32 // l
+    : 40; // m
     struct rr_component_arena *arena =
         rr_simulation_get_arena(simulation, physical->arena);
     int32_t grid_x = rr_fclamp(physical->x / arena->maze->grid_size,

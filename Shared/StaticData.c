@@ -31,7 +31,6 @@ struct rr_petal_base_stat_scale const offensive[rr_rarity_id_max] = {
     {14.5, 48},
     {24.6,144},
     {42.0,432},
-    {102,1512},
 };
 
 struct rr_petal_base_stat_scale const defensive[rr_rarity_id_max] = {
@@ -43,7 +42,6 @@ struct rr_petal_base_stat_scale const defensive[rr_rarity_id_max] = {
     {48, 14.5},
     {144,24.6},
     {432,42.0},
-    {1512,102},
 };
 
 struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
@@ -251,7 +249,7 @@ struct rr_mob_rarity_scale RR_MOB_RARITY_SCALING[rr_rarity_id_max] = {
 uint32_t RR_RARITY_COLORS[rr_rarity_id_max] = {
     0xff7eef6d, 0xffffe65d, 0xff4d52e3, 0xff861fde,
     0xffde1f1f, 0xff1fdbde, 0xffff2b75, 0xff2bffa3, 
-    0xff4000af};
+    0xff3000af};
 
 char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
     "Common",    "Unusual", "Rare",   "Epic",
@@ -262,7 +260,7 @@ double RR_MOB_WAVE_RARITY_COEFFICIENTS[rr_rarity_id_max + 1] = {
     0, 1, 6, 10, 15, 25, 160, 1200, 250, 400};
 
 double RR_DROP_RARITY_COEFFICIENTS[rr_rarity_id_max] = {
-       0, 1, 3, 8, 20, 20, 1700, 200, 600};
+       0, 1, 3, 8, 20, 20, 1500, 200, 600};
 double RR_MOB_LOOT_RARITY_COEFFICIENTS[rr_rarity_id_max] = {2.5, 4,  6,   15,
                                                             35,  50, 125, 200, 275};
 
