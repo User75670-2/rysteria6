@@ -269,7 +269,7 @@ int rr_server_client_read_from_api(struct rr_server_client *this,
     {
         this->checkpoint = 0;
         this->experience = 0;
-        for (uint32_t lvl = 2; lvl <= 200.1; ++lvl)
+        for (uint32_t lvl = 2; lvl <= 200; ++lvl)
             this->experience += xp_to_reach_level(lvl);
         for (uint8_t id = 1; id < rr_petal_id_max; ++id)
             for (uint8_t rarity = 0; rarity < rr_rarity_id_max; ++rarity)
