@@ -106,7 +106,7 @@ uint8_t fern_pachy_zone()
 }
 uint8_t anky_zone()
 {
-    return rr_frand() > 0.7 ? ALL_MOBS : rr_mob_id_ankylosaurus;
+    return rr_frand() > 0.7 ? DIFFICULT_MOBS : rr_mob_id_ankylosaurus;
 }
 uint8_t pter_edmo_zone()
 {
@@ -156,31 +156,31 @@ struct zone
     uint8_t (*spawn_func)();
 };
 
-#define ZONE_POSITION_COUNT 16
+#define ZONE_POSITION_COUNT 5
 
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
-    {9, 38, 4,  2, fern_tree_zone},
-    {16, 38, 8,  2, pter_meteor_zone},
-    {38, 33, 2,  6, trice_dako_zone},
-    {26, 38,  5,  2, trex_anky_zone},
-    {36, 22, 3,  4, edmo_zone},
-    // {19, 33, 5,  2, tree_zone},
-    // {16, 35, 11, 4, tree_zone},
-    {31, 35, 5,  4, trex_zone},
-    {26, 19,  7,  3, quetz_zone},
-    {24,  7,  6,  3, fern_pachy_zone},
-    // {7,  5,  4,  5, fern_pachy_zone},
-    {18, 27,  3,  3, anky_zone},
-    // {32, 9,  5,  2, anky_zone},
-    {8, 22,  4,  4, pter_edmo_zone},
-    // {10, 34, 3,  2, pachy_orni_zone},
-    {10, 35, 3,  2, dako_orni_zone},
-    // {13, 19, 3,  4, quetz_trice_zone},
-    {30, 14, 5,  3, pachy_rex_tree_zone},
-    {15, 26, 2,  3, pter_fern},
-    {22, 27, 2,  2, trex_dako_pter_zone},
-    {2, 1, 4,  2, dako_quetz_zone},
-    {23, 13, 3, 4, meteor_pter_anky}
+    {27, 0, 5,  3, fern_tree_zone},
+    {15, 5, 6,  4, pter_meteor_zone},
+    // {38, 33, 2,  6, trice_dako_zone},
+    {37, 4,  3,  2, trex_anky_zone},
+    // {36, 22, 3,  4, edmo_zone},
+    // // {19, 33, 5,  2, tree_zone},
+    // // {16, 35, 11, 4, tree_zone},
+    // {31, 35, 5,  4, trex_zone},
+    // {26, 19,  7,  3, quetz_zone},
+    // {24,  7,  6,  3, fern_pachy_zone},
+    // // {7,  5,  4,  5, fern_pachy_zone},
+    // {18, 27,  3,  3, anky_zone},
+    // // {32, 9,  5,  2, anky_zone},
+    // {8, 22,  4,  4, pter_edmo_zone},
+    // // {10, 34, 3,  2, pachy_orni_zone},
+    {17, 1, 4,  2, dako_orni_zone},
+    {35, 9, 4,  2, quetz_trice_zone},
+    // {30, 14, 5,  3, pachy_rex_tree_zone},
+    // {15, 26, 2,  3, pter_fern},
+    // {22, 27, 2,  2, trex_dako_pter_zone},
+    // {2, 1, 4,  2, dako_quetz_zone},
+    // {23, 13, 3, 4, meteor_pter_anky}
 };
 
 static void set_spawn_zones()
