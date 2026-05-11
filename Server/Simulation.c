@@ -94,7 +94,7 @@ uint8_t pter_zone()
 }
 uint8_t trex_zone()
 {
-    return rr_frand() > 0.03 ? rr_mob_id_tree : rr_mob_id_trex;
+    return rr_frand() > 0.03 ? rr_mob_id_trex : rr_mob_id_tree;
 }
 uint8_t quetz_zone()
 {
