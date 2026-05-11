@@ -540,7 +540,7 @@ static void system_flower_petal_movement_logic(
                     flower_physical->friction = 1;
                 }
                 else
-                    rr_vector_set_magnitude(&accel, 25 * (petal->rarity + 1));
+                    rr_vector_set_magnitude(&accel, 50 * (petal->rarity + 1));
                 rr_vector_add(&flower_physical->acceleration, &accel);
             }
             break;
@@ -661,7 +661,7 @@ static void petal_modifiers(struct rr_simulation *simulation,
         else if (data->id == rr_petal_id_feather)
         {
             physical->acceleration_scale +=
-                (0.05 + 0.025 * slot->rarity) * feather_diminish_factor;
+                (0.05 + 0.075 * slot->rarity) * feather_diminish_factor;
                     // (0.05) * feather_diminish_factor;
 
             feather_diminish_factor *= 0.5;

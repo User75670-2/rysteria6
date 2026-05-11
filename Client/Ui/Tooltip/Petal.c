@@ -112,7 +112,7 @@ static void get_pickup_range(struct rr_ui_element *this, struct rr_game *game)
 static void get_speed_increase(struct rr_ui_element *this, struct rr_game *game)
 {
     calculate_diminish_factor
-    sprintf(extra, "%.1f%%", (5 + 2.5f * rarity) * diminish_factor);
+    sprintf(extra, "%.1f%%", (5 + 7.5f * rarity) * diminish_factor);
 }
 
 static void get_damage_reduction(struct rr_ui_element *this,
@@ -554,8 +554,22 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
                                   rr_ui_text_init("Stun: ", 12, 0xff4266f5),
                                   rr_ui_text_init(extra, 12, 0xffffffff), NULL),
                               -1, 0));
-    } else if (id == rr_petal_id_permastun || id == rr_petal_id_permastun_obtainable)
+    } else if (id == rr_petal_id_permastun_obtainable)
     {
+        char *extra = malloc((sizeof *extra) * 8);
+        sprintf(extra, "%.1fs",
+                1 + sqrtf(RR_PETAL_RARITY_SCALE[rarity].heal) / 3);
+        rr_ui_container_add_element(
+            this,
+            rr_ui_set_justify(rr_ui_h_container_init(
+                                  rr_ui_container_init(), 0, 0,
+                                  rr_ui_text_init("Max stun rarity: ", 12, 0xffffffff),
+                                  rr_ui_text_init(
+                                    RR_RARITY_NAMES[rarity <= rr_rarity_id_max - 2 ? rarity + 1 : rr_rarity_id_max - 1], 12,
+                                    RR_RARITY_COLORS[rarity <= rr_rarity_id_max - 2 ? rarity + 1 : rr_rarity_id_max - 1]),
+                                    rr_ui_text_init("", 12, 0xffffffff), NULL),
+                                     -1, 0));
+    } else if (id == rr_petal_id_permastun) {
         char *extra = malloc((sizeof *extra) * 8);
         sprintf(extra, "%.1fs",
                 1 + sqrtf(RR_PETAL_RARITY_SCALE[rarity].heal) / 3);
@@ -680,7 +694,7 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
     else if (id == rr_petal_id_bubble)
     {
         char *extra = malloc((sizeof *extra) * 16);
-        sprintf(extra, "%.0f", 25.0f * (rarity + 1));
+        sprintf(extra, "%.0f", 50.0f * (rarity + 1));
         rr_ui_container_add_element(
             this, rr_ui_set_justify(
                       rr_ui_h_container_init(
