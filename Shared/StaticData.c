@@ -82,7 +82,7 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_mandible,  rr_rarity_id_common,    offensive,  5.0f,  10.0f,   0.0f,  75,  0, {1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_wax,       rr_rarity_id_unusual,   offensive, 10.0f,  10.0f,  10.0f,  38,  0, {2,2,2,2,2,2,2,2,3,3}},
     {rr_petal_id_sand,      rr_rarity_id_common,    offensive, 15.0f,  10.0f,  10.0f,  37,  0, {4,4,4,4,4,4,4,4,5,5}},
-    {rr_petal_id_mint,      rr_rarity_id_unusual,   offensive,  5.0f,  10.0f,  10.0f,  50, 25, {1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_mint,      rr_rarity_id_common,   offensive,  5.0f,  10.0f,  10.0f,  50, 25, {1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_dako_egg,  rr_rarity_id_unusual,   defensive,  1.0f,  75.0f,  10.0f,  25, 50, {6,5,5,5,4,4,4,4,3,3}},
     {rr_petal_id_pter_egg,  rr_rarity_id_unusual,   defensive,  1.0f,  75.0f,  10.0f,  25, 50, {6,5,5,4,4,4,3,3,3,3}},
     {rr_petal_id_fern_egg,  rr_rarity_id_common,    defensive,  1.0f,  75.0f,  10.0f,  25, 25, {6,6,6,5,5,4,3,2,2,2}},
@@ -167,7 +167,7 @@ struct rr_mob_data RR_MOB_DATA[rr_mob_id_max] = {
 //   id                                     min_rarity  max_rarity              hp dmg    rad  ai_passive_rarity    ai_neutral_rarity    ai_aggro_rarity       loot
     {rr_mob_id_triceratops,        rr_rarity_id_common, rr_rarity_id_astral,  45, 15, 30.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_max,     {{rr_petal_id_leaf,    0.15},{rr_petal_id_fossil,    0.05},{rr_petal_id_trice_egg,      0.1}}},
     {rr_mob_id_trex,               rr_rarity_id_common, rr_rarity_id_astral,  40, 25, 32.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_unusual, {{rr_petal_id_stinger, 0.03},{rr_petal_id_egg,       0.05},{rr_petal_id_meat,      0.01}, {rr_petal_id_permastun_obtainable, 0.0015}}},
-    {rr_mob_id_fern,               rr_rarity_id_common, rr_rarity_id_astral,  10,  5, 24.0f, rr_rarity_id_max,    rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_leaf,     0.1},{rr_petal_id_azalea,    0.25},{rr_petal_id_fern_egg,  0.13}}},
+    {rr_mob_id_fern,               rr_rarity_id_common, rr_rarity_id_astral,  10,  5, 24.0f, rr_rarity_id_max,    rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_leaf,     0.1},{rr_petal_id_azalea,    0.25},{rr_petal_id_fern_egg,  0.13}, {rr_petal_id_mint, 0.1}}},
     {rr_mob_id_tree,               rr_rarity_id_common, rr_rarity_id_astral, 100,  5, 64.0f, rr_rarity_id_max,    rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_leaf,     2.5},{rr_petal_id_peas,       2.5},{rr_petal_id_seed,      0.05}, {rr_petal_id_tree_egg, 0.06}}},
     {rr_mob_id_pteranodon,         rr_rarity_id_common, rr_rarity_id_astral,  40, 15, 20.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_rare,    {{rr_petal_id_shell,   0.05},{rr_petal_id_beak,      0.15},{rr_petal_id_nest,      0.01}, {rr_petal_id_pter_egg,0.1}}},
     {rr_mob_id_dakotaraptor,       rr_rarity_id_common, rr_rarity_id_astral,  35, 10, 25.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_epic,    {{rr_petal_id_crest,    0.1},{rr_petal_id_feather,    0.1},{rr_petal_id_pellet,    0.05},{rr_petal_id_dako_egg, 0.1}}},
