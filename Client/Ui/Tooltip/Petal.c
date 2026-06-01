@@ -112,7 +112,7 @@ static void get_pickup_range(struct rr_ui_element *this, struct rr_game *game)
 static void get_speed_increase(struct rr_ui_element *this, struct rr_game *game)
 {
     calculate_diminish_factor
-    sprintf(extra, "%.1f%%", (5 + 10.0f * rarity) * diminish_factor);
+    sprintf(extra, "%.1f%%", (5 + 2.5f * rarity) * diminish_factor);
 }
 
 static void get_damage_reduction(struct rr_ui_element *this,
@@ -694,7 +694,7 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
     else if (id == rr_petal_id_bubble)
     {
         char *extra = malloc((sizeof *extra) * 16);
-        sprintf(extra, "%.0f", 40.0f * (rarity + 1));
+        sprintf(extra, "%.0f", 30.0f * (rarity + 1));
         rr_ui_container_add_element(
             this, rr_ui_set_justify(
                       rr_ui_h_container_init(
