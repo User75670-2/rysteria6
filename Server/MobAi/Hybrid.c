@@ -780,7 +780,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 ai->ticks_until_next_action = 50;
                 break;
             }
-            ai->ticks_until_next_action = 25;
+            ai->ticks_until_next_action = 50;
 
             struct rr_component_mob *mob =
                 rr_simulation_get_mob(simulation, entity);

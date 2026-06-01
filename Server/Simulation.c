@@ -188,7 +188,7 @@ struct zone
     uint8_t (*spawn_func)();
 };
 
-#define ZONE_POSITION_COUNT 5
+#define ZONE_POSITION_COUNT 7
 
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     // {27, 0, 5,  3, fern_tree_zone},
@@ -218,9 +218,10 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {11, 0, 29, 6, garden_zone},
     {14, 6, 26, 3, garden_zone},
     {21, 9, 19, 3, garden_zone},
-    {24, 12,17, 3, garden_zone},
-    {28, 15, 15, 2, garden_zone},
-    
+    {24, 12, 16, 3, garden_zone},
+    {28, 15, 12, 2, garden_zone},
+    {30, 17, 10, 4, garden_zone},
+    {33, 21, 7, 19, garden_zone}
 };
 
 static void set_spawn_zones()
