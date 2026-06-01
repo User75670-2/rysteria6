@@ -388,6 +388,13 @@ struct rr_ui_element *rr_ui_settings_container_init(struct rr_game *game)
                                                 0xffffffff),
                                 NULL),
                             -1, -1),
+                        rr_ui_set_justify(
+                            rr_ui_h_container_init(
+                                rr_ui_container_init(), 0, 10,
+                                rr_ui_text_init("Credits to Swierszcz for garden code", 15,
+                                                0xffffffff),
+                                NULL),
+                            -1, -1),
                         NULL),
                     -1, -1),
                 50),
