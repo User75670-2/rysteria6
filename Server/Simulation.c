@@ -78,6 +78,7 @@ uint8_t trice_dako_zone()
 {
     return rr_frand() > 0.2 ? rr_mob_id_dakotaraptor : rr_mob_id_triceratops;
 }
+
 uint8_t trex_anky_zone()
 {
     return rr_frand() > 0.3 ? rr_mob_id_ankylosaurus : rr_mob_id_trex;
@@ -124,13 +125,15 @@ uint8_t quetz_trice_zone()
 {
     return rr_frand() > 0.3 ? rr_mob_id_quetzalcoatlus : rr_mob_id_triceratops;
 }
-// x30 tree chance
+// x15 tree chance
 uint8_t pachy_rex_tree_zone() {
-    return rr_frand() > 
-    0.4 ? rr_mob_id_pachycephalosaurus : rr_frand() > 0.0078 ? rr_mob_id_trex : rr_mob_id_tree;
+    int seed = rr_frand();
+    return seed > 
+    0.4 ? rr_mob_id_pachycephalosaurus : seed > 0.0078 ? rr_mob_id_trex : rr_mob_id_tree;
 }
 uint8_t pter_fern() {
-    return rr_frand() > 0.25 ? rr_mob_id_pteranodon : rr_frand() > 0.1 ? rr_mob_id_trex : rr_mob_id_fern;
+    int seed = rr_frand();
+    return seed > 0.25 ? rr_mob_id_pteranodon : seed > 0.1 ? rr_mob_id_trex : rr_mob_id_fern;
 }
 uint8_t trex_dako_pter_zone() { 
     return rr_frand() > 0.6 ? rr_mob_id_trex : rr_frand() > 0.5 ? rr_mob_id_dakotaraptor : rr_mob_id_pteranodon; 
@@ -142,13 +145,39 @@ uint8_t trice_quetz_fern() {
     return rr_frand() > 0.6 ? rr_mob_id_triceratops : rr_frand() > 0.1 ? rr_mob_id_quetzalcoatlus : rr_mob_id_fern;
 }
 uint8_t meteor_pter_anky() {
-    return rr_frand() > 0.995 
+    int seed = rr_frand();
+    return seed > 0.995 
     ? rr_mob_id_meteor 
-    : rr_frand() > 0.705 
+    : seed > 0.705 
     ? rr_mob_id_ankylosaurus 
-    : rr_frand() > 0.405
+    : seed > 0.405
     ? rr_mob_id_pteranodon
     : ALL_MOBS;
+}
+uint8_t garden_zone()
+{
+    float seed = rr_frand();
+    if ((seed -= 0.03053) < 0)
+        return rr_mob_id_fern;
+    if ((seed -= 0.00051) < 0)
+        return rr_mob_id_tree;
+    if ((seed -= 0.00204) < 0)
+        return rr_mob_id_meteor;
+    if ((seed -= 0.23) < 0)
+        return rr_mob_id_ant;
+    if ((seed -= 0.06) < 0)
+        return rr_mob_id_hornet;
+    if ((seed -= 0.21) < 0)
+        return rr_mob_id_dragonfly;
+    if ((seed -= 0.03) < 0)
+        return rr_mob_id_honeybee;
+    if ((seed -= 0.22) < 0)
+        return rr_mob_id_spider;
+    if ((seed -= 0.015) < 0)
+        return rr_mob_id_house_centipede;
+    if ((seed -= 0.2) < 0)
+        return rr_mob_id_lanternfly;
+    return rr_mob_id_beehive; //0.001915
 }
 struct zone
 {
@@ -159,7 +188,7 @@ struct zone
     uint8_t (*spawn_func)();
 };
 
-#define ZONE_POSITION_COUNT 0
+#define ZONE_POSITION_COUNT 1
 
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     // {27, 0, 5,  3, fern_tree_zone},
@@ -186,6 +215,7 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     // {0, 29, 2,  4, dako_quetz_zone},
     // {1, 0, 4, 2, meteor_pter_anky},
     // {12, 15, 3, 3, trice_quetz_fern}
+    {11, 0, 29, 6, garden_zone}
 };
 
 static void set_spawn_zones()

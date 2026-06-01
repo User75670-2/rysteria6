@@ -45,3 +45,7 @@ void tick_ai_ankylosaurus(EntityIdx, struct rr_simulation *);
 void tick_ai_meteor(EntityIdx, struct rr_simulation *);
 void tick_ai_quetzalcoaltus(EntityIdx, struct rr_simulation *);
 void tick_ai_dakotaraptor(EntityIdx, struct rr_simulation *, float);
+
+void tick_ai_hornet(EntityIdx, struct rr_simulation *);
+void tick_ai_dragonfly(EntityIdx, struct rr_simulation *);
+void tick_ai_honeybee(EntityIdx, struct rr_simulation *);
