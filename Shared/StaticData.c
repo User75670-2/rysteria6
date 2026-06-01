@@ -262,8 +262,8 @@ char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
     "Legendary", "Mythic",  "Exotic", "Ancient", 
     "Eternal", "Astral"};
 
-double RR_MOB_WAVE_RARITY_COEFFICIENTS[rr_rarity_id_max + 1] = {
-    0, 1, 6, 10, 15, 25, 160, 1200, 250, 50, 80};              
+long double RR_MOB_WAVE_RARITY_COEFFICIENTS[rr_rarity_id_max + 1] = {
+    0, 1, 6, 10, 15, 25, 160, 1200, 250, 90, 60};              
 
 double RR_DROP_RARITY_COEFFICIENTS[rr_rarity_id_max] = {
        0, 1, 3, 8, 20, 20, 1700, 200, 500, 60
@@ -323,8 +323,8 @@ double RR_MOB_LOOT_RARITY_COEFFICIENTS[rr_rarity_id_max] = {
 
 static void init_game_coefficients()
 {
-    double sum = 1;
-    double sum2 = 1;
+    long double sum = 1;
+    long double sum2 = 1;
     for (uint64_t a = 1; a < rr_rarity_id_max; ++a)
         RR_MOB_LOOT_RARITY_COEFFICIENTS[a] *=
             RR_MOB_LOOT_RARITY_COEFFICIENTS[a - 1];
@@ -474,19 +474,20 @@ static void print_chances(float difficulty)
     uint32_t rarity = rarity_cap >= rr_rarity_id_eternal ? rarity_cap - 3 : rarity_cap >= 2 ? rarity_cap - 2 : 0;
     for (; rarity <= rarity_cap; ++rarity)
     {
-        float start =
+        long double start =
             rarity == 0
                 ? 0
-                : pow(1 - (1 - RR_MOB_WAVE_RARITY_COEFFICIENTS[rarity]) * 0.3,
-                      pow(1.5, difficulty));
-        float end =
+                : powl(1 - (1 - RR_MOB_WAVE_RARITY_COEFFICIENTS[rarity]) * 0.3L,
+                       powl(1.5L, (long double)difficulty));
+        long double end =
             rarity == rarity_cap
                 ? 1
-                : pow(1 - (1 - RR_MOB_WAVE_RARITY_COEFFICIENTS[rarity + 1]) *
-                              0.3,
-                      pow(1.5, difficulty));
-        printf("%s: %.9f (1 per %.4f)\n", RR_RARITY_NAMES[rarity], end - start,
-               1 / (end - start));
+                : powl(1 - (1 - RR_MOB_WAVE_RARITY_COEFFICIENTS[rarity + 1]) *
+                          0.3L,
+                       powl(1.5L, (long double)difficulty));
+        long double chance = end - start;
+        printf("%s: %.9Lf (1 per %.4Lf)\n", RR_RARITY_NAMES[rarity], chance,
+               1 / chance);
     }
 }
 
@@ -699,6 +700,7 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {_,_,c,c,c,_,_,C,C,U,U,U,U,U,U,_,e,e,e,e,e,e,_,_,_,_,_,e,e,e,_,_,E,E,E,E,E,E,E,E}, // 38
 {_,_,_,_,_,_,_,_,_,U,U,U,U,_,_,_,_,_,e,_,e,e,E,E,_,_,e,e,_,e,E,_,_,_,_,_,_,_,_,_}, // 39
 */
+/*
 {A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,A,_,_,_,_,_,_,_,_,U,u,u,u,u,u,C,C,C,_,_,c,c,c}, // 0
 {A,_,_,A,A,A,A,A,A,A,A,A,A,A,A,A,_,_,_,r,r,r,r,r,U,_,U,u,u,u,u,u,_,C,C,_,c,c,c,c}, // 1
 {A,A,_,_,_,A,A,A,A,A,A,A,A,A,A,_,_,r,r,r,r,r,r,r,U,U,U,_,_,u,u,_,_,C,C,C,c,c,c,c}, // 2
@@ -739,6 +741,47 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {x,x,x,_,_,_,M,M,M,M,M,M,M,M,M,M,_,_,_,_,_,_,M,m,m,_,_,m,_,_,m,m,m,_,m,m,m,m,m,m}, // 37
 {x,x,x,M,M,M,M,M,M,M,M,M,M,_,_,_,_,m,m,m,m,_,_,m,m,m,m,m,m,_,m,m,m,_,_,m,m,m,m,m}, // 38
 {x,x,x,M,M,M,M,M,M,M,M,_,_,_,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m}, // 39
+*/
+{c,c,C,C,_,u,u,u,u,u,u,_,_,_,r,_,_,_,_,_,e,_,_,_,_,L,L,L,_,l,l,_,_,_,L,L,L,L,L,L}, // 0
+{c,c,C,C,_,u,u,_,u,_,u,u,u,_,r,_,r,r,r,_,e,e,e,_,_,_,L,_,_,_,l,l,l,_,L,L,L,L,L,L}, // 1
+{_,_,C,u,u,u,_,_,u,_,_,_,u,_,r,r,r,_,R,R,R,_,e,e,e,_,l,l,_,l,l,_,l,l,l,L,L,L,L,L}, // 2
+{U,_,_,u,_,_,_,U,U,U,U,_,U,_,_,U,_,_,_,R,_,_,_,_,e,_,_,l,l,l,_,_,_,l,l,L,L,L,L,m}, // 3
+{u,u,u,u,u,_,U,U,_,_,r,_,U,U,U,U,_,_,_,R,R,_,_,e,e,e,_,_,_,l,l,_,l,l,_,L,L,L,m,m}, // 4
+{_,_,_,_,U,U,U,_,_,_,r,_,_,_,U,_,_,_,_,_,R,R,_,e,e,_,_,l,_,_,l,l,l,_,_,L,L,m,m,m}, // 5
+{R,_,U,U,U,_,r,r,_,r,r,r,_,_,U,r,r,_,r,r,R,_,_,e,_,_,_,l,l,l,l,_,_,_,_,_,m,m,m,m}, // 6
+{R,_,_,_,_,_,_,r,r,r,_,r,R,_,U,_,r,r,r,_,_,_,e,e,_,_,l,l,l,l,_,_,M,_,M,_,_,m,m,m}, // 7
+{R,R,R,R,_,R,R,R,_,_,_,_,R,_,_,_,_,_,r,r,_,e,e,_,_,_,E,_,_,_,_,M,M,_,M,M,_,m,m,m}, // 8
+{e,_,_,R,R,R,_,R,_,_,_,R,R,_,M,M,M,_,_,_,_,e,E,_,_,E,E,_,x,x,x,M,M,_,_,M,_,_,m,m}, // 9
+{e,e,_,_,_,_,_,e,e,_,e,e,_,_,M,M,x,x,x,x,_,_,E,E,_,E,_,_,_,x,x,_,M,M,M,M,M,_,m,m}, // 10
+{e,e,e,e,e,e,_,_,e,e,e,_,_,M,M,_,x,x,x,x,x,_,_,E,E,E,_,E,_,_,x,_,_,_,_,M,M,_,m,m}, // 11
+{e,e,e,e,_,e,E,_,_,_,_,_,_,M,M,_,_,_,_,x,x,x,_,_,E,E,E,E,E,_,x,x,_,_,M,M,M,m,m,m}, // 12
+{_,_,_,e,_,_,E,E,E,_,l,l,_,_,M,_,M,M,_,x,x,x,x,_,_,E,_,l,l,_,x,x,_,_,M,M,M,m,m,m}, // 13
+{_,l,_,e,e,E,E,E,E,_,_,l,l,_,M,_,M,M,_,_,x,x,x,x,_,_,_,l,l,_,x,x,_,M,M,M,M,M,m,m}, // 14
+{l,l,_,_,_,E,E,E,E,E,l,l,l,_,M,M,M,_,_,_,_,x,x,X,_,a,_,_,l,_,x,x,x,x,_,_,M,M,M,_}, // 15
+{l,l,l,l,_,_,_,_,_,_,l,l,_,_,M,M,M,_,M,M,_,_,X,X,_,a,a,_,_,_,x,x,x,x,x,_,_,M,M,_}, // 16
+{l,l,l,l,l,_,l,l,l,l,l,l,_,m,m,M,M,_,M,M,M,_,_,X,_,_,X,X,X,_,X,X,x,x,x,x,_,M,M,_}, // 17
+{l,_,_,l,l,_,l,l,l,l,l,_,_,m,m,_,_,_,M,M,M,x,_,X,X,_,X,_,X,_,_,X,X,X,X,X,_,_,_,_}, // 18
+{l,_,l,l,l,l,l,_,_,_,_,_,m,m,_,_,M,M,M,M,x,x,_,_,X,X,X,X,X,X,_,_,X,X,X,X,X,X,_,a}, // 19
+{_,_,l,l,_,_,_,_,L,L,L,m,m,m,_,m,M,_,_,_,x,x,x,_,X,_,_,X,X,_,_,_,_,X,X,X,X,_,_,a}, // 20
+{_,l,l,l,_,l,L,L,L,L,_,_,m,m,m,m,M,M,M,M,x,x,x,_,X,X,X,X,_,_,X,X,_,_,X,_,_,_,X,X}, // 21
+{_,l,l,l,l,l,L,L,L,_,_,m,m,m,m,m,M,M,M,M,_,x,x,_,X,X,X,X,X,X,X,X,X,_,X,X,X,X,X,_}, // 22
+{_,_,_,_,l,l,L,L,L,L,L,m,m,m,_,m,m,M,M,M,_,x,_,_,_,_,_,X,X,_,_,a,a,_,X,X,_,_,_,_}, // 23
+{_,_,s,_,_,_,_,_,_,_,L,m,m,m,_,_,m,m,m,_,_,_,_,a,a,a,_,_,_,_,a,a,a,_,a,_,_,_,_,_}, // 24
+{s,_,s,_,T,T,T,T,T,_,_,m,m,m,m,_,_,m,m,_,a,a,a,a,_,_,_,a,a,a,a,a,_,_,a,_,_,_,_,_}, // 25
+{s,_,s,T,T,_,_,_,T,T,_,_,m,m,m,m,m,m,_,_,a,_,_,a,a,a,a,a,a,a,_,_,_,a,a,_,_,_,_,_}, // 26
+{s,_,s,_,T,_,_,_,_,T,T,_,_,m,m,m,m,_,_,a,a,a,a,a,_,_,_,_,_,_,_,a,a,a,a,a,_,_,_,_}, // 27
+{s,_,_,_,T,T,_,_,_,_,T,T,_,_,_,_,_,_,a,a,a,_,_,_,_,s,s,T,_,a,a,a,a,_,_,a,_,_,_,A}, // 28
+{s,s,s,T,T,T,T,_,_,_,T,T,_,A,A,A,_,A,A,A,_,_,s,s,_,_,_,T,_,_,a,a,_,_,a,a,a,_,A,A}, // 29
+{s,s,s,T,T,T,T,T,T,T,T,_,_,A,_,A,A,A,_,A,_,s,s,s,T,T,T,T,T,_,_,A,_,a,a,_,a,A,A,_}, // 30
+{s,s,_,_,_,_,_,_,_,T,T,_,A,A,_,_,_,_,_,A,_,s,s,_,_,_,_,_,T,T,_,A,_,A,_,_,_,A,_,_}, // 31
+{s,_,_,S,S,S,S,S,_,_,T,_,A,_,_,_,_,_,A,A,_,s,_,_,S,S,S,_,_,T,_,_,_,A,A,_,_,A,A,_}, // 32
+{s,_,S,S,_,_,_,S,S,_,T,_,A,A,A,_,_,_,A,_,_,s,s,S,S,_,S,S,_,T,T,t,_,_,_,_,_,_,A,A}, // 33
+{s,_,S,_,_,_,_,_,S,_,T,_,_,_,A,A,A,A,A,A,_,s,_,S,_,_,_,S,_,T,_,t,_,_,_,_,A,A,A,_}, // 34
+{s,_,S,S,_,_,_,S,S,_,t,t,t,_,_,_,_,_,_,A,_,_,_,S,_,_,_,S,_,t,_,t,t,t,A,A,A,_,_,_}, // 35
+{s,_,_,S,S,_,S,S,_,_,t,_,t,t,t,t,t,t,_,A,A,A,_,S,_,_,_,S,_,t,_,_,_,t,A,_,_,_,_,_}, // 36
+{s,s,_,_,S,S,S,_,_,t,t,_,_,t,_,_,_,t,A,A,_,A,_,S,S,_,S,S,_,t,t,t,_,t,_,_,_,_,_,_}, // 37
+{s,s,s,_,_,s,_,_,T,t,t,t,_,t,t,t,_,_,_,A,_,A,_,_,S,S,S,_,_,t,_,t,_,t,t,_,_,_,_,T}, // 38
+{s,s,s,s,s,s,_,T,T,t,t,t,t,t,t,t,t,t,A,A,A,A,A,_,_,_,_,_,t,t,_,t,t,t,t,t,t,t,t,t}, // 39
 };
 // clang-format on
 RR_DEFINE_MAZE(BURROW, 4) = {{1, 1}, {0, 1}};
@@ -748,16 +791,16 @@ RR_DEFINE_MAZE(BURROW, 4) = {{1, 1}, {0, 1}};
         &RR_MAZE_##MAZE[0][0]
 
 struct rr_maze_declaration RR_MAZES[rr_biome_id_max] = {
-    {MAZE_ENTRY(HELL_CREEK, 1024), 8, {
+    {MAZE_ENTRY(HELL_CREEK, 1024), 0, {
         // {-2, -2, 43, 43, 3, 31, 1}, // pvp
-        {36, 1, 3, 3, 37, 1, 1},   // 0
-        {28, 5, 4, 3, 30, 5, 20},  // 1
-        {21, 3, 4, 2, 22, 4, 40},  // 2
-        {27, 9, 2, 3, 28, 10, 60},  // 3
-        {33, 18, 3, 3, 34, 19, 80},  // 4
-        {27, 25, 13, 3, 28, 26, 100},  // 5
-        {28, 38, 3, 2, 29, 39, 120}, // 6
-        {2, 31, 5, 3, 4, 32, 140}, // 7
+        // {36, 1, 3, 3, 37, 1, 1},   // 0
+        // {28, 5, 4, 3, 30, 5, 20},  // 1
+        // {21, 3, 4, 2, 22, 4, 40},  // 2
+        // {27, 9, 2, 3, 28, 10, 60},  // 3
+        // {33, 18, 3, 3, 34, 19, 80},  // 4
+        // {27, 25, 13, 3, 28, 26, 100},  // 5
+        // {28, 38, 3, 2, 29, 39, 120}, // 6
+        // {2, 31, 5, 3, 4, 32, 140}, // 7
     }},
     {MAZE_ENTRY(HELL_CREEK, 1024), 0},
     {MAZE_ENTRY(BURROW, 512), 0},

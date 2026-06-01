@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const editor = document.getElementById("editor");
-const GRID_SIZE = 40;
+const GRID_SIZE = 50;
 let isDragging = false;
 let initialDragState = null;  // This will capture the state of the tile when dragging begins
 let zone_count = 0;

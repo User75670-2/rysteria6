@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <assert.h>
+#include <ctype.h>
 #include <fenv.h>
 #include <signal.h>
 #include <stdio.h>
@@ -25,6 +26,59 @@
 #ifdef RIVET_BUILD
 #include <curl/curl.h>
 #endif
+
+static char *trim(char *s)
+{
+    char *end;
+    while (*s && isspace((unsigned char)*s))
+        s++;
+    if (*s == 0)
+        return s;
+    end = s + strlen(s) - 1;
+    while (end > s && isspace((unsigned char)*end))
+        end--;
+    end[1] = '\0';
+    return s;
+}
+
+static void load_env_file(char const *path)
+{
+    FILE *file = fopen(path, "r");
+    if (file == NULL)
+        return;
+
+    char line[2048];
+    while (fgets(line, sizeof(line), file) != NULL)
+    {
+        char *text = trim(line);
+        if (*text == '\0' || *text == '#')
+            continue;
+
+        char *equals = strchr(text, '=');
+        if (equals == NULL)
+            continue;
+
+        *equals = '\0';
+        char *name = trim(text);
+        char *value = trim(equals + 1);
+        if (*value == '"')
+        {
+            size_t len = strlen(value);
+            if (len >= 2 && value[len - 1] == '"')
+            {
+                value[len - 1] = '\0';
+                value++;
+            }
+        }
+        if (*name == '\0' || *value == '\0')
+            continue;
+
+        if (getenv(name) == NULL)
+            setenv(name, value, 1);
+    }
+
+    fclose(file);
+}
 
 #include <Server/Logs.h>
 #include <Server/Server.h>
@@ -39,6 +93,11 @@ int main()
     fprintf(stderr, "gameserver on version %llu\n", RR_SECRET8 ^ 255);
     srand(time(0));
     // signal(SIGINT, sigint_handle);
+
+    load_env_file("../.env");
+    load_env_file("../../.env");
+    load_env_file(".env");
+
 #ifdef RIVET_BUILD
     curl_global_init(CURL_GLOBAL_ALL);
 #endif
