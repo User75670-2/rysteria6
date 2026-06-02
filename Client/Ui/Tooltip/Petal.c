@@ -61,16 +61,24 @@ static void get_cooldown(struct rr_ui_element *this, struct rr_game *game)
     {
         if (game->simulation_ready)
         {
-            for (uint8_t i = 0; i < game->slots_unlocked; ++i)
+            for (uint8_t i = 0; i < game->slots_unlocked; ++i){
                 if (game->player_info->slots[i].id == rr_petal_id_berry)
                     reload_speed += 0.02 *
                                     (game->player_info->slots[i].rarity + 1);
+
+                if (game->player_info->slots[i].id == rr_petal_id_gleaf)
+                    reload_speed += 0.06 * (game->player_info->slots[i].rarity + 1);
+            }
         }
         else
         {
-            for (uint8_t i = 0; i < game->slots_unlocked; ++i)
+            for (uint8_t i = 0; i < game->slots_unlocked; ++i){
                 if (game->cache.loadout[i].id == rr_petal_id_berry)
                     reload_speed += 0.02 * (game->cache.loadout[i].rarity + 1);
+
+                if (game->cache.loadout[i].id == rr_petal_id_gleaf)
+                    reload_speed += 0.06 * (game->cache.loadout[i].rarity + 1);
+            }
         }
     }
     if (RR_PETAL_DATA[id].cooldown == 0)
@@ -389,7 +397,111 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
                               RR_RARITY_COLORS[rarity >= 1 ? rarity - 0 : 0]),
                           rr_ui_text_init(" Ornithomimus", 12, 0xffffffff), NULL),
                       -1, 0));
-    } else if (id == rr_petal_id_eggOP)
+    } else if (id == rr_petal_id_ant_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Ant", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_hornet_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Hornet", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_dragonfly_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Dragonfly", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_honeybee_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Honeybee", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_beehive_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Honeybee x6", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_spider_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Spider", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_house_centipede_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity], 12,
+                              RR_RARITY_COLORS[rarity]),
+                          rr_ui_text_init(" House Centipede", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_lanternfly_egg) 
+    {
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Spawns: ", 12, 0xffe07422),
+                          rr_ui_text_init(
+                              RR_RARITY_NAMES[rarity >= 1 ? rarity - 1 : 0], 12,
+                              RR_RARITY_COLORS[rarity >= 1 ? rarity - 1 : 0]),
+                          rr_ui_text_init(" Lanternfly", 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_eggOP)
     {
         rr_ui_container_add_element(
             this, rr_ui_set_justify(
@@ -427,6 +539,19 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
                       -1, 0));
         extra = malloc((sizeof *extra) * 16);
         sprintf(extra, "+%.0f%%", 0.02 * (rarity + 1) * 100);
+        rr_ui_container_add_element(
+            this, rr_ui_set_justify(
+                      rr_ui_h_container_init(
+                          rr_ui_container_init(), 0, 0,
+                          rr_ui_text_init("Petal reload speed: ", 12, 0xff12bef1),
+                          rr_ui_text_init(extra, 12, 0xffffffff), NULL),
+                      -1, 0));
+    }
+    else if (id == rr_petal_id_gleaf)
+    {
+
+        char *extra = malloc((sizeof *extra) * 16);
+        sprintf(extra, "+%.0f%%", 0.06 * (rarity + 1) * 100);
         rr_ui_container_add_element(
             this, rr_ui_set_justify(
                       rr_ui_h_container_init(

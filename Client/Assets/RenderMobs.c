@@ -26,7 +26,7 @@
 // head, body, legs, tail, IN THAT ORDER
 
 struct rr_renderer_spritesheet mob_sprites[rr_mob_id_max];
-struct rr_renderer_spritesheet friendly_mob_sprites[12];
+struct rr_renderer_spritesheet friendly_mob_sprites[20];
 void render_sprite(struct rr_renderer *renderer, uint8_t id, uint32_t pos,
                    uint8_t flags)
 {
@@ -66,6 +66,31 @@ void render_sprite(struct rr_renderer *renderer, uint8_t id, uint32_t pos,
                                          pos);
             else if (id == rr_mob_id_ornithomimus)
                 render_sprite_from_cache(renderer, &friendly_mob_sprites[11],
+                                         pos);
+            else if (id == rr_mob_id_ant)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[12],
+                                         pos);
+            else if (id == rr_mob_id_hornet)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[13],
+                                         pos);
+            else if (id == rr_mob_id_dragonfly)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[14],
+                                         pos);
+            else if (id == rr_mob_id_honeybee)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[15],
+                                         pos);
+            else if (id == rr_mob_id_beehive)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[16],
+                                            pos); 
+                                         // beehive doesn't have a sprite, because it's just honeybees
+            else if (id == rr_mob_id_spider)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[17],
+                                         pos);
+            else if (id == rr_mob_id_house_centipede)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[18],
+                                         pos);
+            else if (id == rr_mob_id_lanternfly)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[19],
                                          pos);
             else if (id == rr_mob_id_meteor)
                 render_sprite_from_cache(renderer, &friendly_mob_sprites[1],
@@ -522,6 +547,40 @@ void rr_renderer_mob_cache_init()
         rr_ornithomimus_body_draw, 240, 144, rr_ornithomimus_wing1_draw, 240,
         144, rr_ornithomimus_wing2_draw, 336, 192, rr_ornithomimus_tail_draw,
         0);
+    rr_renderer_spritesheet_init(&friendly_mob_sprites[12], friendly_mask, 192, 192,
+                                 rr_ant_head_draw, 192, 192, rr_ant_thorax_draw,
+                                 192, 192, rr_ant_abdomen_draw, 192, 192,
+                                 rr_ant_leg_draw, 0);
+    rr_renderer_spritesheet_init(
+        &friendly_mob_sprites[13], friendly_mask, 192, 192, rr_hornet_head_draw, 192, 192,
+        rr_hornet_thorax_draw, 192, 192, rr_hornet_abdomen_draw, 192, 192,
+        rr_hornet_leg_draw, 192, 192, rr_hornet_wing_draw, 0);
+    rr_renderer_spritesheet_init(
+        &friendly_mob_sprites[14], friendly_mask, 192, 192, rr_dragonfly_head_draw, 192, 192,
+        rr_dragonfly_thorax_draw, 192, 192, rr_dragonfly_abdomen_draw, 192, 192,
+        rr_dragonfly_wing_draw, 0);
+    rr_renderer_spritesheet_init(
+        &friendly_mob_sprites[15], friendly_mask, 192, 192, rr_honeybee_head_draw, 192, 192,
+        rr_honeybee_thorax_draw, 192, 192, rr_honeybee_abdomen_draw, 192, 192,
+        rr_honeybee_leg_draw, 192, 192, rr_honeybee_wing_draw, 0);
+        
+    rr_renderer_spritesheet_init(&friendly_mob_sprites[16], friendly_mask, 384, 384,
+                                 rr_beehive_draw, 0);
+
+    rr_renderer_spritesheet_init(
+        &friendly_mob_sprites[17], friendly_mask, 240, 240, rr_spider_head_draw, 240, 240,
+        rr_spider_abdomen_draw, 240, 240, rr_spider_leg_draw, 0);
+        
+    rr_renderer_spritesheet_init(&friendly_mob_sprites[18], friendly_mask, 240, 240,
+                                 rr_house_centipede_head_draw, 240, 240,
+                                 rr_house_centipede_body_draw, 240, 240,
+                                 rr_house_centipede_leg_draw, 0);
+    rr_renderer_spritesheet_init(
+        &friendly_mob_sprites[19], friendly_mask, 240, 240, rr_lanternfly_head_draw, 240, 240,
+        rr_lanternfly_abdomen_draw, 240, 240, rr_lanternfly_leg_draw, 240, 240,
+        rr_lanternfly_wing1_draw, 0);
+
+        
     rr_renderer_spritesheet_init(&mob_sprites[2], NULL, 672, 672, rr_fern_draw,
                                  0);
 

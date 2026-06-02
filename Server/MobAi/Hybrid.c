@@ -762,7 +762,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                     (ai->has_prediction ||
                      rr_simulation_get_mob(simulation, entity)->rarity >=
                          rr_rarity_id_exotic) *
-                        20); // make this less op
+                        35); // make this less op
         rr_component_physical_set_angle(physical, rr_vector_theta(&prediction));
         if (rr_vector_magnitude_cmp(&delta, 500) == 1)
         {
@@ -780,7 +780,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 ai->ticks_until_next_action = 50;
                 break;
             }
-            ai->ticks_until_next_action = 50;
+            ai->ticks_until_next_action = 35;
 
             struct rr_component_mob *mob =
                 rr_simulation_get_mob(simulation, entity);
@@ -824,7 +824,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
         rr_vector_sub(&delta, &target_pos);
         struct rr_vector prediction =
             predict(delta, physical2->velocity,
-                    ai->has_prediction * 20); // make this less op
+                    ai->has_prediction * 35); // make this less op
         rr_component_physical_set_angle(physical, rr_vector_theta(&prediction));
         if (ai->ticks_until_next_action < 50)
         {

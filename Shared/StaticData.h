@@ -153,15 +153,24 @@ enum rr_petal_id
     rr_petal_id_edmo_egg,  // 40
     rr_petal_id_pachy_egg, // 41
     rr_petal_id_orni_egg, // 42
-    rr_petal_id_obliterator, // 43
-    rr_petal_id_eggOP, // 44
-    rr_petal_id_eggTest, // 45
-    rr_petal_id_permastun, // 46
-    rr_petal_id_superfling, // 47
-    rr_petal_id_permastun_obtainable, // 48
-        rr_petal_id_rice,      // ??
+    rr_petal_id_ant_egg, // 43
+    rr_petal_id_hornet_egg, // 44
+    rr_petal_id_dragonfly_egg, // 45
+    rr_petal_id_honeybee_egg, // 46
+    rr_petal_id_beehive_egg, // 47
+    rr_petal_id_spider_egg, // 48
+    rr_petal_id_house_centipede_egg, // 49
+    rr_petal_id_lanternfly_egg, // 50
+    rr_petal_id_obliterator, // ??
+    rr_petal_id_eggOP, // ??
+    rr_petal_id_eggTest, // ??
+    rr_petal_id_permastun, // ??
+    rr_petal_id_superfling, // ??
+    rr_petal_id_permastun_obtainable, // ??
+    rr_petal_id_rice,      // ??
     rr_petal_id_missile,   // ??
-    rr_petal_id_max,       // 49
+    rr_petal_id_gleaf,    // ??
+    rr_petal_id_max,       // ??
 };
 
 enum rr_mob_id
@@ -227,7 +236,7 @@ struct rr_petal_data
     float clump_radius;
     uint32_t cooldown;
     uint32_t secondary_cooldown; // for stuff like projectiles
-    uint16_t count[rr_rarity_id_max];
+    uint16_t count[10];
 };
 
 struct rr_petal_rarity_scale

@@ -614,7 +614,7 @@ static void system_flower_petal_movement_logic(
                              curr_angle);
         rr_vector_add(&chase_vector, &clump_vector);
     }
-    if (petal->id == rr_petal_id_berry)
+    if (petal->id == rr_petal_id_berry || petal->id == rr_petal_id_gleaf)
     {
         struct rr_vector random_vector;
         rr_vector_from_polar(&random_vector, 10.0f, rr_frand() * M_PI * 2);
@@ -680,6 +680,10 @@ static void petal_modifiers(struct rr_simulation *simulation,
         {
             to_rotate += (0.02 + 0.012 * slot->rarity);
             player_info->modifiers.reload_speed += 0.02 * (slot->rarity + 1);
+        }
+        else if (data->id == rr_petal_id_gleaf)
+        {
+            player_info->modifiers.reload_speed += 0.06 * (slot->rarity + 1);
         }
         else if (data->id == rr_petal_id_feather)
         {
@@ -793,6 +797,38 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     {
         m_id = rr_mob_id_ornithomimus;
         m_rar = petal->rarity >= 1 ? petal->rarity - 0 : 0;
+    } else if (petal->id == rr_petal_id_ant_egg)
+    {
+        m_id = rr_mob_id_ant;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
+    } else if (petal->id == rr_petal_id_hornet_egg)
+    {
+        m_id = rr_mob_id_hornet;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
+    } else if (petal->id == rr_petal_id_dragonfly_egg)
+    {
+        m_id = rr_mob_id_dragonfly;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
+    } else if (petal->id == rr_petal_id_honeybee_egg)
+    {
+        m_id = rr_mob_id_honeybee;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
+    } else if (petal->id == rr_petal_id_beehive_egg)
+    {
+        m_id = rr_mob_id_honeybee;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
+    } else if (petal->id == rr_petal_id_spider_egg)
+    {
+        m_id = rr_mob_id_spider;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
+    } else if (petal->id == rr_petal_id_house_centipede_egg)
+    {
+        m_id = rr_mob_id_house_centipede;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 0 : 0;
+    } else if (petal->id == rr_petal_id_lanternfly_egg)
+    {
+        m_id = rr_mob_id_lanternfly;
+        m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
     } else if (petal->id == rr_petal_id_eggOP)
     {
         m_id = rr_mob_id_trex;
@@ -800,8 +836,8 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     }
     else if (petal->id == rr_petal_id_eggTest)
     {
-        char mobs[] = {rr_mob_id_trex, rr_mob_id_dakotaraptor, rr_mob_id_pteranodon, rr_mob_id_fern, rr_mob_id_tree, rr_mob_id_ankylosaurus, rr_mob_id_triceratops, rr_mob_id_quetzalcoatlus, rr_mob_id_edmontosaurus, rr_mob_id_pachycephalosaurus, rr_mob_id_ornithomimus, rr_mob_id_meteor};
-        m_id = mobs[rand() % 12];
+        char mobs[] = {rr_mob_id_trex, rr_mob_id_dakotaraptor, rr_mob_id_pteranodon, rr_mob_id_fern, rr_mob_id_tree, rr_mob_id_ankylosaurus, rr_mob_id_triceratops, rr_mob_id_quetzalcoatlus, rr_mob_id_edmontosaurus, rr_mob_id_pachycephalosaurus, rr_mob_id_ornithomimus, rr_mob_id_meteor, rr_mob_id_ant, rr_mob_id_hornet, rr_mob_id_dragonfly, rr_mob_id_honeybee, rr_mob_id_spider, rr_mob_id_house_centipede, rr_mob_id_lanternfly};
+        m_id = mobs[rand() % 19];
         m_rar = petal->rarity >= 0 ? petal->rarity - 1 : 0;
     }
     else if (petal->id == rr_petal_id_meteor)
@@ -823,7 +859,8 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     rr_component_relations_set_owner(mob_relations, player_info->flower_id);
     rr_component_relations_update_root_owner(simulation, mob_relations);
     if (m_id == rr_mob_id_trex || m_id == rr_mob_id_dakotaraptor ||  m_id == rr_mob_id_pteranodon
-         || m_id == rr_mob_id_fern || m_id == rr_mob_id_tree || m_id == rr_mob_id_ankylosaurus || m_id == rr_mob_id_triceratops || m_id == rr_mob_id_quetzalcoatlus || m_id == rr_mob_id_edmontosaurus || m_id == rr_mob_id_pachycephalosaurus || m_id == rr_mob_id_ornithomimus)
+         || m_id == rr_mob_id_fern || m_id == rr_mob_id_tree || m_id == rr_mob_id_ankylosaurus || m_id == rr_mob_id_triceratops || m_id == rr_mob_id_quetzalcoatlus || m_id == rr_mob_id_edmontosaurus || m_id == rr_mob_id_pachycephalosaurus || m_id == rr_mob_id_ornithomimus
+         || m_id == rr_mob_id_ant || m_id == rr_mob_id_hornet || m_id == rr_mob_id_dragonfly || m_id == rr_mob_id_honeybee || m_id == rr_mob_id_spider || m_id == rr_mob_id_house_centipede || m_id == rr_mob_id_lanternfly)
     {
         mob_relations->nest = relations->nest;
         if (m_id != rr_mob_id_fern && m_id != rr_mob_id_tree) 
@@ -1027,6 +1064,14 @@ static void rr_system_petal_reload_foreach_function(EntityIdx id,
                     data->id == rr_petal_id_edmo_egg ||
                     data->id == rr_petal_id_pachy_egg ||
                     data->id == rr_petal_id_orni_egg || 
+                    data->id == rr_petal_id_ant_egg ||
+                    data->id == rr_petal_id_hornet_egg ||
+                    data->id == rr_petal_id_dragonfly_egg ||
+                    data->id == rr_petal_id_honeybee_egg ||
+                    data->id == rr_petal_id_beehive_egg ||
+                    data->id == rr_petal_id_spider_egg ||
+                    data->id == rr_petal_id_house_centipede_egg ||
+                    data->id == rr_petal_id_lanternfly_egg ||
                     data->id == rr_petal_id_eggOP ||
                     data->id == rr_petal_id_eggTest
                 )
@@ -1129,7 +1174,7 @@ static void system_petal_misc_logic(EntityIdx id, void *_simulation)
             meat_petal_system(simulation, petal);
         else if (petal->id == rr_petal_id_missile)
         {
-            rr_vector_from_polar(&physical->acceleration, 25.0f,
+            rr_vector_from_polar(&physical->acceleration, 20.0f,
                                  physical->bearing_angle);
         }
         if (--petal->effect_delay <= 0)
