@@ -111,7 +111,8 @@ uint8_t anky_zone()
 }
 uint8_t pter_edmo_zone()
 {
-    return rr_frand() > 0.7 ? rr_mob_id_edmontosaurus : rr_frand() > 0.4 ? rr_mob_id_pteranodon : ALL_MOBS;
+    float seed = rr_frand();
+    return seed > 0.7 ? rr_mob_id_edmontosaurus : seed > 0.4 ? rr_mob_id_pteranodon : ALL_MOBS;
 }
 uint8_t pachy_orni_zone()
 {
