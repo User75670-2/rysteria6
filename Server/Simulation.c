@@ -192,8 +192,8 @@ uint8_t dragonfly_quetz_zone() {
     return rr_frand() > 0.4 ? rr_mob_id_dragonfly : rr_mob_id_quetzalcoatlus;
 }
 uint8_t hornet_bee_beehive_zone() {
-    float seed = rr_frand();
-    return seed > 0.05 ? rr_mob_id_hornet : seed > 0.55 ? rr_mob_id_honeybee : rr_mob_id_beehive;
+    float seed = rr_frand();                // ~ 5x chance for beehive
+    return seed > 0.55 ? rr_mob_id_honeybee : seed > 0.01 ? rr_mob_id_hornet : rr_mob_id_beehive;
 }
 uint8_t lanternfly_centi() {
     return rr_frand() > 0.2 ? rr_mob_id_lanternfly : rr_mob_id_house_centipede;
