@@ -29,8 +29,8 @@ uint32_t get_spawn_rarity(float difficulty)
         difficulty = 1;
     long double rarity_seed = rr_frand();
     uint32_t rarity_cap = rr_rarity_id_common + (difficulty + 7) / 8;
-    if (rarity_cap > rr_rarity_id_astral)
-        rarity_cap = rr_rarity_id_astral;
+    if (rarity_cap > rr_rarity_id_max - 1)
+        rarity_cap = rr_rarity_id_max - 1;
     uint32_t rarity = rarity_cap >= rr_rarity_id_eternal ? rarity_cap - 3 : rarity_cap >= 2 ? rarity_cap - 2 : 0;
     for (; rarity < rarity_cap; ++rarity)
         if (powl(1 - (1 - RR_MOB_WAVE_RARITY_COEFFICIENTS[rarity + 1]) * 0.3L,

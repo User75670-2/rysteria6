@@ -103,6 +103,7 @@ enum rr_rarity_id
     rr_rarity_id_ultimate,
     rr_rarity_id_eternal,
     rr_rarity_id_astral,
+    rr_rarity_id_atomic,
     rr_rarity_id_max
 };
 
@@ -236,7 +237,7 @@ struct rr_petal_data
     float clump_radius;
     uint32_t cooldown;
     uint32_t secondary_cooldown; // for stuff like projectiles
-    uint16_t count[10];
+    uint16_t count[rr_rarity_id_max];
 };
 
 struct rr_petal_rarity_scale
@@ -260,8 +261,8 @@ extern struct rr_mob_data RR_MOB_DATA[rr_mob_id_max];
 extern char const *RR_MOB_NAMES[rr_mob_id_max];
 extern struct rr_mob_rarity_scale RR_MOB_RARITY_SCALING[rr_rarity_id_max];
 extern struct rr_petal_rarity_scale RR_PETAL_RARITY_SCALE[rr_rarity_id_max];
-extern double RR_MOB_LOOT_RARITY_COEFFICIENTS[rr_rarity_id_max];
-extern double RR_DROP_RARITY_COEFFICIENTS[rr_rarity_id_max];
+extern long double RR_MOB_LOOT_RARITY_COEFFICIENTS[rr_rarity_id_max];
+extern long double RR_DROP_RARITY_COEFFICIENTS[rr_rarity_id_max];
 extern long double RR_MOB_WAVE_RARITY_COEFFICIENTS[rr_rarity_id_max + 1];
 
 extern uint32_t RR_MOB_DIFFICULTY_COEFFICIENTS[rr_mob_id_max];

@@ -240,7 +240,7 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {21, 21,  2,  3, quetz_zone},
     // {3,  22,  3,  3, fern_pachy_zone},
     // // {7,  5,  4,  5, fern_pachy_zone},
-    {15, 18,  2,  3, anky_zone},
+    {13, 23,  3,  3, anky_zone},
     // // // {32, 9,  5,  2, anky_zone},
     {14, 9,  3,  2, pter_edmo_zone},
     // // // {10, 34, 3,  2, pachy_orni_zone},
@@ -440,17 +440,26 @@ static void despawn_mob(EntityIdx entity, void *_simulation)
                       arena->maze->maze_dim - 1))
             ->player_count == 0)
     {
-
-        if (mob->ticks_to_despawn > 30 * 25)
-            mob->ticks_to_despawn = 30 * 25;
-        if (--mob->ticks_to_despawn == 0 && mob->rarity < rr_rarity_id_eternal)
+        if (mob->rarity == rr_rarity_id_max - 2) {
+            if (mob->ticks_to_despawn > 120 * 25)
+               mob->ticks_to_despawn = 120 * 25;
+        } else {
+            if (mob->ticks_to_despawn > 30 * 25)
+                mob->ticks_to_despawn = 30 * 25;
+        }
+        if (--mob->ticks_to_despawn == 0 && mob->rarity < rr_rarity_id_max - 1)
         {
             mob->no_drop = 1;
             rr_simulation_request_entity_deletion(this, entity);
         }
     }
-    else
-        mob->ticks_to_despawn = 30 * 25;
+    else {
+        if (mob->rarity == rr_rarity_id_max - 2){
+            mob->ticks_to_despawn = 120 * 25;
+        } else {
+            mob->ticks_to_despawn = 30 * 25;
+        }
+    }
 }
 
 static float get_max_points(struct rr_simulation *this,

@@ -111,9 +111,12 @@ void tick_ai_dakotaraptor(EntityIdx entity, struct rr_simulation *simulation,
         if (ai->ticks_until_next_action == 0)
         {
             if (rr_simulation_get_mob(simulation, entity)->rarity >=
-                rr_rarity_id_exotic)
+                rr_rarity_id_exotic && ai->ticks_until_next_action == 0){
+                ai->ticks_until_next_action = 50;
                 ai->ai_state = rr_ai_state_exotic_special;
-            ai->ticks_until_next_action = 50;
+                } else {
+                ai->ticks_until_next_action = 50;
+                }
         }        break;
     }
     case rr_ai_state_exotic_special:
@@ -136,7 +139,7 @@ void tick_ai_dakotaraptor(EntityIdx entity, struct rr_simulation *simulation,
         if (ai->ticks_until_next_action == 0)
         {
             ai->ai_state = rr_ai_state_attacking;
-            ai->ticks_until_next_action = 200;
+            ai->ticks_until_next_action = 300;
         }
         break;
     }

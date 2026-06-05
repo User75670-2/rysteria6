@@ -148,13 +148,13 @@ static void collapse_arena(EntityIdx entity, void *_captures)
     struct rr_component_mob *mob = rr_simulation_get_mob(this, entity);
     if (arena->mob_count == 0 && arena->player_entered)
     {
-        if (mob->ticks_to_despawn > 25)
-            mob->ticks_to_despawn = 25;
+            if (mob->ticks_to_despawn > 25)
+                mob->ticks_to_despawn = 25;
         --mob->ticks_to_despawn;
     }
     else if (arena->player_entered)
         --mob->ticks_to_despawn;
-    if (mob->ticks_to_despawn == 0 && mob->rarity < rr_rarity_id_eternal)
+    if (mob->ticks_to_despawn == 0)
         rr_simulation_request_entity_deletion(this, entity);
 }
 

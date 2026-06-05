@@ -52,7 +52,7 @@ void rr_component_petal_render(EntityIdx entity, struct rr_game *game,
             petal->id != rr_petal_id_meteor
                 ? &game->default_particle_manager
                 : &game->foreground_particle_manager;
-        float exotic_coeff = petal->rarity == rr_rarity_id_exotic ? 0.5 : petal->rarity == rr_rarity_id_ultimate ? 1 : petal->rarity == rr_rarity_id_eternal ? 1.5 : 2;
+        float exotic_coeff = 1;
                 float size_coeff =
             physical->on_title_screen ? physical->radius / 20 : 1;
         float colorful_coeff = petal->id == rr_petal_id_fireball ||
@@ -85,7 +85,6 @@ void rr_component_petal_render(EntityIdx entity, struct rr_game *game,
         particle->opacity = (0.3 + 0.2 * rr_frand()) *
                                 exotic_coeff * colorful_coeff;
         particle->disappearance = physical->on_title_screen ? 4 : 6;
-        particle->color = 0xffffffff;
         if (petal->id == rr_petal_id_fireball)
         {
             switch (rand() % 3)
@@ -102,7 +101,33 @@ void rr_component_petal_render(EntityIdx entity, struct rr_game *game,
             }
         }
         else if (petal->id == rr_petal_id_meteor)
+        {
             particle->color = 0xffab3423;
+        }
+        else
+        {
+            switch(petal->rarity)
+            {
+                case rr_rarity_id_exotic:
+                    particle->color = 0xffff2b75;
+                    break;
+                case rr_rarity_id_ultimate:
+                    particle->color = 0xff2bffa3;
+                    break;
+                case rr_rarity_id_eternal:
+                    particle->color = 0xff3000af;
+                    break;
+                case rr_rarity_id_astral:
+                    particle->color = 0xffffff9f;
+                    break;
+                case rr_rarity_id_atomic:
+                    particle->color = 0xff101010;
+                    break;
+                default:
+                    particle->color = 0xffffffff;
+                    break;
+            }
+        }
     }
     if (game->cache.tint_petals)
         rr_renderer_add_color_filter(renderer, RR_RARITY_COLORS[petal->rarity],
