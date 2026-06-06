@@ -110,8 +110,9 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_superfling,  rr_rarity_id_common,  defensive,  0.0f,  1000000000.0f,  0.0f,  0.0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_permastun_obtainable,rr_rarity_id_common,defensive,  0.0f,  10.0f,  0.0f,  750,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_rice,      rr_rarity_id_common,    offensive,  7.0f,   1.0f,   0.0f,   1,  0, {1,1,1,1,1,1,1,1,1,1,1}},
-    {rr_petal_id_missile,   rr_rarity_id_rare,      offensive,  22.0f,   2.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
-    {rr_petal_id_gleaf,     rr_rarity_id_legendary, offensive,  7.0f,  9.0f,   8.0f,  75,  0, {1,1,1,1,1,1,2,2,2,3,3}},
+    {rr_petal_id_missile,   rr_rarity_id_rare,      offensive,  23.0f,   2.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_gleaf,     rr_rarity_id_legendary, offensive,  8.0f,  9.0f,   8.0f,  75,  0, {1,1,1,1,1,1,2,2,2,3,3}},
+    {rr_petal_id_hmissile,   rr_rarity_id_rare,      offensive,  10.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
 };    
 
 char const *RR_PETAL_NAMES[rr_petal_id_max] = {
@@ -122,7 +123,7 @@ char const *RR_PETAL_NAMES[rr_petal_id_max] = {
     "Meteor",   "Mandible",  "Wax",       "Sand",   "Mint", "Dako Egg", "Pter Egg",
     "Fern Egg", "Tree Egg", "Anky Egg", "Trice Egg", "Quetz Egg", "Edmo Egg", "Pachy Egg", "Orni Egg", "Ant Egg", 
     "Hornet Egg", "Dragonfly Egg", "Bee Egg", "Hive Egg", "Spider Egg", "Centi Egg", "Lanternfly Egg",
-    "Obliterator", "OP Egg", "Test Egg", "Permastun Dev", "Superfling", "Permastun", "Rice", "Missile", "Golden Leaf",
+    "Obliterator", "OP Egg", "Test Egg", "Permastun Dev", "Superfling", "Permastun", "Rice", "Missile", "Golden Leaf", "Hornet Missile"
 };
 char const *RR_PETAL_DESCRIPTIONS[rr_petal_id_max] = {
     0,
@@ -184,13 +185,14 @@ char const *RR_PETAL_DESCRIPTIONS[rr_petal_id_max] = {
     "Permanently stuns enemies.",
     "Chinese love it.",
     "Shell copycat.",
-    "Too expensive for you."
+    "Too expensive for you.",
+    "You are hacker for obtaining this."
 };
 
 struct rr_mob_data RR_MOB_DATA[rr_mob_id_max] = {
 //   id                                     min_rarity  max_rarity              hp dmg    rad  ai_passive_rarity    ai_neutral_rarity    ai_aggro_rarity       loot
     {rr_mob_id_triceratops,        rr_rarity_id_common, rr_rarity_id_max - 1,  45, 15, 30.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_max,     {{rr_petal_id_leaf,    0.15},{rr_petal_id_fossil,    0.05},{rr_petal_id_trice_egg,      0.1}}},
-    {rr_mob_id_trex,               rr_rarity_id_common, rr_rarity_id_max - 1,  40, 25, 32.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_unusual, {{rr_petal_id_stinger, 0.03},{rr_petal_id_egg,       0.05},{rr_petal_id_meat,      0.01}, {rr_petal_id_permastun_obtainable, 0.0015}}},
+    {rr_mob_id_trex,               rr_rarity_id_common, rr_rarity_id_max - 1,  40, 25, 32.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_unusual, {{rr_petal_id_stinger, 0.03},{rr_petal_id_egg,       0.05},{rr_petal_id_meat,      0.01}, {rr_petal_id_permastun_obtainable, 0.002}}},
     {rr_mob_id_fern,               rr_rarity_id_common, rr_rarity_id_max - 1,  10,  5, 24.0f, rr_rarity_id_max,    rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_leaf,     0.1},{rr_petal_id_azalea,    0.25},{rr_petal_id_fern_egg,  0.13}, {rr_petal_id_gleaf, 0.02}}},
     {rr_mob_id_tree,               rr_rarity_id_common, rr_rarity_id_max - 1, 100,  5, 64.0f, rr_rarity_id_max,    rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_leaf,     2.5},{rr_petal_id_peas,       2.5},{rr_petal_id_seed,      0.05}, {rr_petal_id_tree_egg, 0.06}}},
     {rr_mob_id_pteranodon,         rr_rarity_id_common, rr_rarity_id_max - 1,  40, 15, 20.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_rare,    {{rr_petal_id_shell,   0.05},{rr_petal_id_beak,      0.15},{rr_petal_id_nest,      0.01}, {rr_petal_id_pter_egg,0.1}}},

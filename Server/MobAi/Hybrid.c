@@ -783,14 +783,15 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 ai->ticks_until_next_action = 50;
                 break;
             }
-            ai->ticks_until_next_action = 35;
+            ai->ticks_until_next_action = 25;
 
             struct rr_component_mob *mob =
                 rr_simulation_get_mob(simulation, entity);
             // spawn a missile
             EntityIdx petal_id = rr_simulation_alloc_petal(
                 simulation, physical->arena, physical->x, physical->y,
-                rr_petal_id_missile, mob->rarity, mob->parent_id);
+                // use missile designed for hornet instead
+                rr_petal_id_hmissile, mob->rarity, mob->parent_id);
             struct rr_component_physical *physical2 =
                 rr_simulation_get_physical(simulation, petal_id);
             struct rr_component_health *health =

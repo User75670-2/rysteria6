@@ -171,6 +171,7 @@ enum rr_petal_id
     rr_petal_id_rice,      // ??
     rr_petal_id_missile,   // ??
     rr_petal_id_gleaf,    // ??
+    rr_petal_id_hmissile,   // ??
     rr_petal_id_max,       // ??
 };
 
