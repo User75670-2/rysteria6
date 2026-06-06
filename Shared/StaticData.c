@@ -55,11 +55,11 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_none,      rr_rarity_id_common,    offensive,  0.0f,   0.0f,   0.0f,   0,  0, {0,0,0,0,0,0,0,0,0,0,0}},
     {rr_petal_id_basic,     rr_rarity_id_common,    offensive, 15.0f,  15.0f,   0.0f,  50,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_pellet,    rr_rarity_id_common,    offensive,  11.0f,   5.0f,   0.0f,  13,  0, {1,2,2,3,3,5,6,6,6,6,6}},
-    {rr_petal_id_fossil,    rr_rarity_id_common,    offensive,  5.5f, 150.0f,   0.0f, 100,  0, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_fossil,    rr_rarity_id_common,    offensive,  6.0f, 150.0f,   0.0f, 100,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_stinger,   rr_rarity_id_common,    offensive, 75.0f,   3.0f,  10.0f, 150,  0, {1,1,1,1,1,3,5,5,6,6,6}},
     {rr_petal_id_berry,     rr_rarity_id_rare,      offensive,  7.0f,   5.0f,  12.0f,  13,  0, {1,1,1,1,1,2,3,3,4,4,5}},
-    {rr_petal_id_shell,     rr_rarity_id_rare,      offensive, 30.0f,  16.0f,   0.0f,  50, 13, {1,1,1,1,2,2,3,3,4,4,5}},
-    {rr_petal_id_peas,      rr_rarity_id_rare,      offensive, 24.0f,  12.0f,   8.0f,  13, 12, {4,4,4,4,4,4,5,5,5,6,6}},
+    {rr_petal_id_shell,     rr_rarity_id_rare,      offensive, 30.0f,  16.0f,   0.0f,  63, 13, {1,1,1,1,2,2,3,3,4,4,5}},
+    {rr_petal_id_peas,      rr_rarity_id_rare,      offensive, 24.0f,  14.0f,   8.0f,  13, 12, {4,4,4,4,4,4,5,5,5,6,6}},
     {rr_petal_id_leaf,      rr_rarity_id_unusual,   offensive,  12.0f,  8.0f,   8.0f,  38,  0, {1,1,1,1,2,2,3,3,3,3,4}},
     {rr_petal_id_egg,       rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25,100,  {1,4,3,3,3,2,2,2,2,2,2}},
     {rr_petal_id_magnet,    rr_rarity_id_unusual,   defensive,  2.0f,  25.0f,   0.0f,  38,  0, {1,1,1,1,1,1,1,1,1,1,1}},
@@ -788,8 +788,8 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {U,_,_,u,_,_,_,r,U,r,r,_,U,_,_,U,_,_,_,R,_,_,_,_,e,_,_,l,l,l,_,_,_,l,l,L,L,L,L,m}, // 3
 {u,u,u,u,U,_,r,r,_,_,r,_,U,U,U,U,_,_,_,R,R,_,_,e,e,e,_,_,_,l,l,_,l,l,_,L,L,L,m,m}, // 4
 {_,_,_,_,U,U,r,_,_,_,r,_,_,_,U,_,_,_,_,_,R,R,_,e,e,_,_,l,_,_,l,l,l,_,_,L,L,m,m,m}, // 5
-{R,_,U,U,U,_,r,r,r,r,r,r,_,_,U,r,r,_,r,r,R,_,_,e,_,_,_,l,l,l,l,_,_,_,_,_,m,m,m,m}, // 6
-{R,_,_,_,_,_,_,r,_,_,_,r,R,_,U,_,r,r,r,_,_,_,e,e,_,_,l,l,l,l,_,_,M,_,M,_,_,m,m,m}, // 7
+{e,_,U,U,U,_,r,r,_,r,r,r,_,_,U,r,r,_,r,r,R,_,_,e,_,_,_,l,l,l,l,_,_,_,_,_,m,m,m,m}, // 6
+{R,_,_,_,_,_,_,r,r,r,_,r,R,_,U,_,r,r,r,_,_,_,e,e,_,_,l,l,l,l,_,_,M,_,M,_,_,m,m,m}, // 7
 {R,R,R,R,_,R,R,R,_,_,_,_,R,_,_,_,_,_,r,R,_,e,e,_,_,_,E,_,_,_,_,M,M,_,M,M,_,m,m,m}, // 8
 {R,R,R,R,R,R,_,R,_,_,_,R,R,_,M,M,M,_,_,_,_,e,E,E,_,E,E,_,x,x,x,M,M,_,_,M,_,_,m,m}, // 9
 {e,e,_,_,_,_,_,e,e,_,e,e,_,_,M,M,M,M,x,x,_,_,E,E,E,E,_,_,_,x,x,_,M,M,M,M,M,_,m,m}, // 10
@@ -798,20 +798,20 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {_,_,_,e,_,_,e,E,E,_,l,l,_,_,M,M,M,M,M,x,x,x,x,_,_,_,_,l,l,_,x,x,_,_,M,M,M,m,m,m}, // 13
 {_,l,_,e,e,e,E,E,E,_,_,l,l,_,M,M,M,M,_,_,x,x,x,x,_,_,_,l,l,_,x,x,_,M,M,M,M,M,m,m}, // 14
 {l,l,_,_,_,E,E,E,E,E,l,l,_,_,M,M,M,_,_,_,_,x,x,x,_,X,_,_,l,_,x,x,x,x,_,_,M,M,M,_}, // 15
-{l,l,l,l,_,_,_,_,_,_,l,l,_,m,M,M,M,_,x,x,_,_,x,x,_,X,X,_,_,_,x,x,x,x,x,_,_,M,M,_}, // 16
-{l,l,l,l,l,_,l,l,l,l,l,l,_,m,m,_,M,_,x,x,x,_,_,x,_,_,X,X,X,_,X,X,x,x,x,X,_,M,M,_}, // 17
-{l,_,_,l,l,_,l,l,l,l,l,_,_,m,_,_,_,_,M,x,x,_,_,x,x,_,X,_,X,_,_,X,X,X,X,X,_,_,_,_}, // 18
-{l,_,l,l,l,l,l,_,_,_,_,_,m,m,_,m,m,_,M,M,x,x,_,_,X,X,X,_,X,X,X,X,X,X,X,X,X,X,X,X}, // 19
-{_,_,l,l,_,_,_,_,m,m,m,m,m,m,m,m,m,_,M,M,M,x,x,_,X,_,_,_,_,X,X,X,X,X,X,X,X,_,_,X}, // 20
-{_,L,L,L,_,L,L,m,m,_,_,_,m,m,_,_,m,M,M,M,_,x,x,_,X,X,X,_,_,_,X,X,_,_,X,_,_,_,X,X}, // 21
-{_,L,L,L,L,L,L,_,_,_,_,m,m,_,_,_,_,M,M,M,_,x,x,_,_,_,X,X,X,X,X,X,X,_,X,X,X,X,X,_}, // 22
-{_,_,_,_,L,L,L,m,m,m,_,m,_,_,m,_,_,_,M,M,_,x,_,_,_,_,_,X,X,_,_,a,a,_,X,X,_,_,_,_}, // 23
-{_,_,s,_,_,_,_,_,_,m,m,m,_,m,m,m,_,_,m,_,_,_,_,a,a,a,_,_,_,_,a,a,a,_,a,_,_,_,_,_}, // 24
-{s,_,s,_,T,T,T,T,_,_,_,m,m,m,m,_,_,m,m,_,_,a,a,a,_,_,_,a,a,a,a,a,_,_,a,_,_,_,_,_}, // 25
-{s,_,s,T,T,_,_,T,T,T,_,_,m,m,_,_,m,m,_,_,a,a,a,a,a,a,a,a,a,a,_,_,_,a,a,_,_,_,_,_}, // 26
-{s,_,s,_,T,_,_,_,_,T,T,_,_,m,m,m,m,_,_,_,a,a,a,a,_,_,_,_,_,_,_,a,a,a,a,a,_,_,_,_}, // 27
-{s,_,_,_,T,T,_,_,_,_,T,T,_,_,_,_,_,_,_,a,a,_,_,_,_,s,s,s,_,a,a,a,a,_,_,a,_,_,_,A}, // 28
-{s,s,s,s,T,T,T,_,_,_,T,T,_,A,A,A,_,A,A,A,_,_,S,S,_,_,_,s,_,_,a,a,_,_,a,a,a,_,A,A}, // 29
+{l,l,l,l,_,_,_,_,_,_,l,l,_,m,M,M,M,_,M,M,_,_,x,x,_,X,X,_,_,_,x,_,_,x,x,_,_,M,M,_}, // 16
+{l,l,l,l,l,_,l,l,l,l,l,l,_,m,m,_,M,_,M,M,M,_,_,x,_,_,X,X,X,_,X,X,_,_,_,_,_,M,M,_}, // 17
+{l,_,_,l,l,_,l,l,l,l,l,_,_,m,_,_,_,_,M,M,M,_,_,x,x,_,X,_,X,_,_,X,X,X,X,X,_,_,_,_}, // 18
+{l,_,l,l,l,l,l,_,_,_,_,_,m,m,_,m,m,_,m,M,M,M,_,_,X,X,X,_,X,X,X,X,X,X,X,X,X,X,X,X}, // 19
+{_,_,l,l,_,_,_,_,m,m,m,m,m,m,m,m,m,m,m,m,M,M,M,_,X,_,_,_,_,X,X,X,X,X,X,X,X,_,_,X}, // 20
+{_,L,L,L,_,L,L,L,L,_,_,m,m,m,_,_,m,m,m,m,_,M,M,_,X,X,X,_,_,_,X,X,_,_,X,_,_,_,X,X}, // 21
+{_,L,L,L,_,_,_,L,_,_,m,m,_,_,_,_,_,m,m,m,_,M,M,_,_,_,X,X,X,X,X,X,X,_,X,X,X,X,X,_}, // 22
+{_,_,L,L,L,L,L,L,L,m,m,_,_,m,m,_,_,m,m,m,_,M,_,_,_,_,_,X,X,_,_,a,a,_,X,X,_,_,_,_}, // 23
+{_,_,_,_,_,_,_,_,_,m,m,_,m,m,m,m,_,_,m,_,_,_,_,a,a,a,_,_,_,_,a,a,a,_,a,_,_,t,t,t}, // 24
+{s,_,s,_,T,T,T,T,_,_,m,m,m,m,m,_,_,m,m,_,_,a,a,a,_,_,_,a,a,a,a,a,_,_,a,_,t,t,t,_}, // 25
+{s,_,s,T,T,_,_,T,T,_,_,_,m,m,_,_,m,m,_,_,a,a,a,a,a,a,a,a,a,a,_,_,_,a,a,_,_,t,_,_}, // 26
+{s,_,s,_,T,_,_,_,T,T,T,_,_,m,m,m,m,_,_,_,a,a,a,a,_,_,_,_,_,_,_,a,a,a,a,a,_,A,A,A}, // 27
+{s,_,_,_,T,T,_,_,_,T,T,T,_,_,_,_,_,_,_,a,a,_,_,_,_,s,s,s,_,a,a,a,a,_,_,a,_,_,A,_}, // 28
+{s,s,s,s,T,T,T,_,_,T,T,T,_,A,A,A,_,A,A,A,_,_,S,S,_,_,_,s,_,_,a,a,_,_,a,a,a,_,A,_}, // 29
 {s,s,s,s,T,T,T,T,T,T,T,_,_,A,_,A,A,A,_,A,_,S,S,S,s,s,s,s,s,_,_,A,_,a,a,_,A,A,A,_}, // 30
 {s,s,_,_,_,_,_,_,_,T,T,_,A,A,_,_,_,_,_,A,_,S,S,_,_,_,_,_,s,s,_,A,_,A,_,_,_,A,_,_}, // 31
 {s,_,_,O,O,O,O,O,_,_,T,_,A,_,_,_,_,_,A,A,_,S,_,_,o,o,o,_,_,T,_,_,_,A,A,_,_,A,A,_}, // 32
