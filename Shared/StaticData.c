@@ -112,7 +112,7 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_rice,      rr_rarity_id_common,    offensive,  7.0f,   1.0f,   0.0f,   1,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_missile,   rr_rarity_id_rare,      offensive,  23.0f,   2.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_gleaf,     rr_rarity_id_legendary, offensive,  8.0f,  9.0f,   8.0f,  75,  0, {1,1,1,1,1,1,2,2,2,3,3}},
-    {rr_petal_id_hmissile,   rr_rarity_id_rare,      offensive,  10.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_hmissile,   rr_rarity_id_rare,      offensive,  8.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
 };    
 
 char const *RR_PETAL_NAMES[rr_petal_id_max] = {
@@ -208,7 +208,7 @@ struct rr_mob_data RR_MOB_DATA[rr_mob_id_max] = {
     {rr_mob_id_dragonfly,          rr_rarity_id_common, rr_rarity_id_max - 1,  40, 10, 25.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_legendary,     {{rr_petal_id_bubble,   0.1},{rr_petal_id_magnet,    0.05}, {rr_petal_id_dragonfly_egg, 0.1}}},
     {rr_mob_id_honeybee,           rr_rarity_id_common, rr_rarity_id_max - 1,  20, 30, 22.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_max,     {{rr_petal_id_wax,     0.1},{rr_petal_id_stinger,   0.02}, {rr_petal_id_honeybee_egg, 0.1}}},
     {rr_mob_id_beehive,            rr_rarity_id_common, rr_rarity_id_max - 1,   0,  0, 45.0f, rr_rarity_id_common, rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_wax,     0.05},{rr_petal_id_azalea,    0.05}, {rr_petal_id_beehive_egg, 0.1}}},
-    {rr_mob_id_spider,             rr_rarity_id_common, rr_rarity_id_max - 1,  20, 25, 19.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_common,     {{rr_petal_id_web,      0.1},{rr_petal_id_third_eye, 0.01}, {rr_petal_id_berry, 0.08}, {rr_petal_id_spider_egg, 0.1}}},
+    {rr_mob_id_spider,             rr_rarity_id_common, rr_rarity_id_max - 1,  20, 20, 19.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_common,     {{rr_petal_id_web,      0.1},{rr_petal_id_third_eye, 0.01}, {rr_petal_id_berry, 0.08}, {rr_petal_id_spider_egg, 0.1}}},
     {rr_mob_id_house_centipede,    rr_rarity_id_common, rr_rarity_id_max - 1,  25, 10, 23.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_legendary,     {{rr_petal_id_peas,     0.1},{rr_petal_id_sand,      0.05}, /*don't add centi egg, it's buggy, not worth it*/}},
     {rr_mob_id_lanternfly,         rr_rarity_id_common, rr_rarity_id_max - 1,  35, 15, 25.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_epic,     {{rr_petal_id_mint,     0.1},{rr_petal_id_sand,      0.05}, {rr_petal_id_lanternfly_egg, 0.1}}},
 };
