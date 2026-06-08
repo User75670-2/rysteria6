@@ -884,7 +884,7 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
         
             // rr_mob_id_house_centipede, // bugged, don't enable
         };
-        char mob = mobs[rand() % 18];
+        char mob = mobs[rand() % 19];
         int pet_rarity;
         switch (mob) {
             case rr_mob_id_lanternfly:
