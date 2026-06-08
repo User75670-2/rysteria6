@@ -26,7 +26,7 @@
 // head, body, legs, tail, IN THAT ORDER
 
 struct rr_renderer_spritesheet mob_sprites[rr_mob_id_max];
-struct rr_renderer_spritesheet friendly_mob_sprites[20];
+struct rr_renderer_spritesheet friendly_mob_sprites[21];
 void render_sprite(struct rr_renderer *renderer, uint8_t id, uint32_t pos,
                    uint8_t flags)
 {
@@ -91,6 +91,9 @@ void render_sprite(struct rr_renderer *renderer, uint8_t id, uint32_t pos,
                                          pos);
             else if (id == rr_mob_id_lanternfly)
                 render_sprite_from_cache(renderer, &friendly_mob_sprites[19],
+                                         pos);
+            else if (id == rr_mob_id_pectinodon)
+                render_sprite_from_cache(renderer, &friendly_mob_sprites[20],
                                          pos);
             else if (id == rr_mob_id_meteor)
                 render_sprite_from_cache(renderer, &friendly_mob_sprites[1],
@@ -580,7 +583,11 @@ void rr_renderer_mob_cache_init()
         &friendly_mob_sprites[19], friendly_mask, 240, 240, rr_lanternfly_head_draw, 240, 240,
         rr_lanternfly_abdomen_draw, 240, 240, rr_lanternfly_leg_draw, 240, 240,
         rr_lanternfly_wing1_draw, 0);
-
+        
+            rr_renderer_spritesheet_init(
+    &friendly_mob_sprites[20], friendly_mask, 240, 144, rr_pectinodon_head_draw, 336, 192,
+    rr_pectinodon_body_draw, 240, 144, rr_pectinodon_wing1_draw, 240, 144,
+    rr_pectinodon_wing2_draw, 336, 192, rr_pectinodon_tail_draw, 0);
         
     rr_renderer_spritesheet_init(&mob_sprites[2], NULL, 672, 672, rr_fern_draw,
                                  0);

@@ -44,7 +44,7 @@ void rr_component_mob_render(EntityIdx entity, struct rr_game *game,
          mob->id == rr_mob_id_fern || mob->id == rr_mob_id_tree || mob->id == rr_mob_id_ankylosaurus || mob->id == rr_mob_id_triceratops ||
          mob->id == rr_mob_id_quetzalcoatlus || mob->id == rr_mob_id_edmontosaurus || mob->id == rr_mob_id_pachycephalosaurus || mob->id == rr_mob_id_ornithomimus ||
          mob->id == rr_mob_id_ant || mob->id == rr_mob_id_hornet || mob->id == rr_mob_id_dragonfly || mob->id == rr_mob_id_honeybee || mob->id == rr_mob_id_spider ||
-         mob->id == rr_mob_id_house_centipede || mob->id == rr_mob_id_lanternfly
+         mob->id == rr_mob_id_house_centipede || mob->id == rr_mob_id_lanternfly || mob->id == rr_mob_id_pectinodon
         ) &&
         is_friendly)
         rr_renderer_add_color_filter(renderer, 0xffffff63, 0.3);

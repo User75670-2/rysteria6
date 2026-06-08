@@ -789,12 +789,12 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     } else if (petal->id == rr_petal_id_fern_egg)
     {
         m_id = rr_mob_id_fern;
-        m_rar = petal->rarity >= 1 ? petal->rarity - 0 : 0;
+        m_rar = petal->rarity;
     }
      else if (petal->id == rr_petal_id_tree_egg)
     {
         m_id = rr_mob_id_tree;
-        m_rar = petal->rarity >= 1 ? petal->rarity - 0 : 0;
+        m_rar = petal->rarity;
     } else if (petal->id == rr_petal_id_anky_egg)
     {
         m_id = rr_mob_id_ankylosaurus;
@@ -818,7 +818,7 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     } else if (petal->id == rr_petal_id_orni_egg)
     {
         m_id = rr_mob_id_ornithomimus;
-        m_rar = petal->rarity >= 1 ? petal->rarity - 0 : 0;
+        m_rar = petal->rarity;
     } else if (petal->id == rr_petal_id_ant_egg)
     {
         m_id = rr_mob_id_ant;
@@ -846,15 +846,18 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     } else if (petal->id == rr_petal_id_house_centipede_egg)
     {
         m_id = rr_mob_id_house_centipede;
-        m_rar = petal->rarity >= 1 ? petal->rarity - 0 : 0;
+        m_rar = petal->rarity;
     } else if (petal->id == rr_petal_id_lanternfly_egg)
     {
         m_id = rr_mob_id_lanternfly;
+        m_rar = petal->rarity;
+    } else if (petal->id == rr_petal_id_pecti_egg) {
+        m_id = rr_mob_id_pectinodon;
         m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
     } else if (petal->id == rr_petal_id_eggOP)
     {
         m_id = rr_mob_id_trex;
-        m_rar = petal->rarity >= 0 ? petal->rarity - 0 : 0;
+        m_rar = petal->rarity;
     }
     else if (petal->id == rr_petal_id_eggTest)
     {
@@ -876,30 +879,15 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
             rr_mob_id_dragonfly, 
             rr_mob_id_honeybee, 
             rr_mob_id_spider, 
-            rr_mob_id_lanternfly
+            rr_mob_id_lanternfly,
+            rr_mob_id_pectinodon,
         
             // rr_mob_id_house_centipede, // bugged, don't enable
         };
         char mob = mobs[rand() % 18];
         int pet_rarity;
         switch (mob) {
-            case rr_mob_id_trex:
-            case rr_mob_id_dakotaraptor:
-            case rr_mob_id_pteranodon:
-            case rr_mob_id_ankylosaurus:
-            case rr_mob_id_triceratops:
-            case rr_mob_id_quetzalcoatlus:
-            case rr_mob_id_edmontosaurus:
-            case rr_mob_id_pachycephalosaurus:
-            case rr_mob_id_meteor:
-            case rr_mob_id_ant:
-            case rr_mob_id_hornet:
-            case rr_mob_id_dragonfly:
-            case rr_mob_id_honeybee:
-            case rr_mob_id_spider:
             case rr_mob_id_lanternfly:
-                pet_rarity = petal->rarity >= 0 ? petal->rarity - 1 : 0;
-                break;
             case rr_mob_id_fern:
             case rr_mob_id_tree:
             case rr_mob_id_ornithomimus:
@@ -931,8 +919,12 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     rr_component_relations_set_owner(mob_relations, player_info->flower_id);
     rr_component_relations_update_root_owner(simulation, mob_relations);
     if (m_id == rr_mob_id_trex || m_id == rr_mob_id_dakotaraptor ||  m_id == rr_mob_id_pteranodon
-         || m_id == rr_mob_id_fern || m_id == rr_mob_id_tree || m_id == rr_mob_id_ankylosaurus || m_id == rr_mob_id_triceratops || m_id == rr_mob_id_quetzalcoatlus || m_id == rr_mob_id_edmontosaurus || m_id == rr_mob_id_pachycephalosaurus || m_id == rr_mob_id_ornithomimus
-         || m_id == rr_mob_id_ant || m_id == rr_mob_id_hornet || m_id == rr_mob_id_dragonfly || m_id == rr_mob_id_honeybee || m_id == rr_mob_id_spider || m_id == rr_mob_id_house_centipede || m_id == rr_mob_id_lanternfly)
+         || m_id == rr_mob_id_fern || m_id == rr_mob_id_tree || m_id == rr_mob_id_ankylosaurus 
+         || m_id == rr_mob_id_triceratops || m_id == rr_mob_id_quetzalcoatlus || m_id == rr_mob_id_edmontosaurus 
+         || m_id == rr_mob_id_pachycephalosaurus || m_id == rr_mob_id_ornithomimus
+         || m_id == rr_mob_id_ant || m_id == rr_mob_id_hornet || m_id == rr_mob_id_dragonfly 
+         || m_id == rr_mob_id_honeybee || m_id == rr_mob_id_spider || m_id == rr_mob_id_house_centipede 
+         || m_id == rr_mob_id_lanternfly || m_id == rr_mob_id_pectinodon)
     {
         mob_relations->nest = relations->nest;
         if (m_id != rr_mob_id_fern && m_id != rr_mob_id_tree) 
@@ -1144,6 +1136,7 @@ static void rr_system_petal_reload_foreach_function(EntityIdx id,
                     data->id == rr_petal_id_spider_egg ||
                     data->id == rr_petal_id_house_centipede_egg ||
                     data->id == rr_petal_id_lanternfly_egg ||
+                    data->id == rr_petal_id_pecti_egg ||
                     data->id == rr_petal_id_eggOP ||
                     data->id == rr_petal_id_eggTest
                 )

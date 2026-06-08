@@ -86,7 +86,7 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_sand,      rr_rarity_id_common,    offensive,  11.0f,  10.0f,  10.0f,  20,  0, {4,4,4,4,4,4,4,4,5,5,6}},
     {rr_petal_id_mint,      rr_rarity_id_unusual,   offensive,  5.0f,  10.0f,  10.0f,  50, 25, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_dako_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 50, {1,5,5,5,4,4,4,4,3,3,3}},
-    {rr_petal_id_pter_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 50, {1,5,5,4,4,4,3,3,3,2,2}},
+    {rr_petal_id_pter_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,5,5,4,4,4,3,3,3,2,2}},
     {rr_petal_id_fern_egg,  rr_rarity_id_common,    defensive,  1.0f,  75.0f,  10.0f,  25, 25, {1,6,6,5,5,4,3,2,2,2,2}},
     {rr_petal_id_tree_egg,  rr_rarity_id_common,    defensive,  1.0f,  75.0f,  10.0f,  25, 150,{1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_anky_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,5,4,4,3,3,3,3,2,2,2}},
@@ -94,7 +94,7 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_quetz_egg,  rr_rarity_id_common,  defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,4,4,3,3,3,2,2,2,2,2}},
     {rr_petal_id_edmo_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,4,4,4,3,3,3,2,2,2,2}},
     {rr_petal_id_pachy_egg,  rr_rarity_id_common,  defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,4,4,4,3,3,3,2,2,2,2}},
-    {rr_petal_id_orni_egg,  rr_rarity_id_common,    defensive,  1.0f,  75.0f,  10.0f,  25, 500, {6,5,4,4,3,2,1,1,1,1,1}},
+    {rr_petal_id_orni_egg,  rr_rarity_id_common,    defensive,  1.0f,  75.0f,  10.0f,  25, 300, {6,5,4,4,3,2,1,1,1,1,1}},
     {rr_petal_id_ant_egg,     rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f, 25, 100, {1,4,4,3,3,3,3,2,2,2,2}},
     {rr_petal_id_hornet_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,4,4,4,3,3,3,2,2,2,2}},
     {rr_petal_id_dragonfly_egg, rr_rarity_id_common, defensive,  1.0f,  75.0f,  10.0f, 25, 50, {1,5,5,5,4,4,4,3,3,2,2}},
@@ -102,18 +102,19 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_beehive_egg,  rr_rarity_id_unusual,   defensive,  1.0f,  75.0f,  10.0f,  25, 150, {6,6,6,6,6,6,6,6,6,6,6}},
     {rr_petal_id_spider_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 50, {1,4,4,4,4,3,3,3,3,2,2}},
     {rr_petal_id_house_centipede_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 100, {3,3,2,2,2,1,1,1,1,1,1}},
-    {rr_petal_id_lanternfly_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 50, {1,6,6,5,5,5,4,4,4,3,3}},
-    {rr_petal_id_obliterator,rr_rarity_id_common,   offensive, 1000000000.0f,  1000000000.0f,   0.0f,  0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
-    {rr_petal_id_eggOP,       rr_rarity_id_unusual, defensive,  1.0f,  75.0f,  10.0f,  0,0, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_lanternfly_egg, rr_rarity_id_common,    defensive,  1.0f,  75.0f,  10.0f,  25, 400, {6,5,4,4,3,2,1,1,1,1,1}},
+    {rr_petal_id_pecti_egg,  rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25, 75, {1,5,5,4,4,4,3,3,3,2,2}},
     {rr_petal_id_eggTest, rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25,125,  {1,4,3,3,3,2,2,2,2,2,2}},
-    {rr_petal_id_permastun,   rr_rarity_id_common,  defensive,  0.0f,  1000000000.0f,  0.0f,  0.0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
-    {rr_petal_id_superfling,  rr_rarity_id_common,  defensive,  0.0f,  1000000000.0f,  0.0f,  0.0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_permastun_obtainable,rr_rarity_id_common,defensive,  0.0f,  10.0f,  0.0f,  750,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_rice,      rr_rarity_id_common,    offensive,  3.0f,   1.0f,   0.0f,   1,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_missile,   rr_rarity_id_rare,      offensive,  8.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_gleaf,     rr_rarity_id_legendary, offensive,  7.0f,  8.0f,   8.0f,  75,  0, {1,1,1,1,1,1,2,2,2,3,3}},
     {rr_petal_id_stick,     rr_rarity_id_rare,      offensive,  1.0f,   8.0f,   0.0f,  50,  0, {1,1,1,1,1,3,5,5,5,6,6}},
     {rr_petal_id_hmissile,   rr_rarity_id_rare,      offensive,  8.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_obliterator,rr_rarity_id_common,   offensive, 1000000000.0f,  1000000000.0f,   0.0f,  0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_eggOP,       rr_rarity_id_unusual, defensive,  1.0f,  75.0f,  10.0f,  0,0, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_permastun,   rr_rarity_id_common,  defensive,  0.0f,  1000000000.0f,  0.0f,  0.0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_superfling,  rr_rarity_id_common,  defensive,  0.0f,  1000000000.0f,  0.0f,  0.0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
 };    
 
 char const *RR_PETAL_NAMES[rr_petal_id_max] = {
@@ -123,8 +124,8 @@ char const *RR_PETAL_NAMES[rr_petal_id_max] = {
     "Beak",     "Lightning", "Third Eye", "Nest",   "Fireball", "Meat",    "Bubble",
     "Meteor",   "Mandible",  "Wax",       "Sand",   "Mint", "Dako Egg", "Pter Egg",
     "Fern Egg", "Tree Egg", "Anky Egg", "Trice Egg", "Quetz Egg", "Edmo Egg", "Pachy Egg", "Orni Egg", "Ant Egg", 
-    "Hornet Egg", "Dragonfly Egg", "Bee Egg", "Hive Egg", "Spider Egg", "Centi Egg", "Lanternfly Egg",
-    "Obliterator", "OP Egg", "Random Mob Egg", "Permastun Dev", "Superfling", "Permastun", "Rice", "Missile", "Golden Leaf", "Stick", "Hornet Missile"
+    "Hornet Egg", "Dragonfly Egg", "Bee Egg", "Hive Egg", "Spider Egg", "Centi Egg", "Lanternfly Egg", "Pecti egg", "Random Mob Egg",
+    "Permastun", "Rice", "Missile", "Golden Leaf", "Stick", "Hornet Missile", "Obliterator", "OP Egg", "Permastun Dev", "Superfling",
 };
 char const *RR_PETAL_DESCRIPTIONS[rr_petal_id_max] = {
     0,
@@ -178,17 +179,20 @@ char const *RR_PETAL_DESCRIPTIONS[rr_petal_id_max] = {
     "Spawns a pet spider to protect you",
     "Dev only. Buggy. Spawns a pet house centipede to protect you",
     "Spawns a pet lanternfly to protect you",
-    "Obliterate any enemy. Dev-only petal.",
-    "OP. Spawns a pet T-rex to protect you. Dev-only petal.",
+    "Spawns a pet pectinodon to protect you",
     "Spawns a random pet to protect you.",
-    "Permanently stuns enemies. Dev-only petal.",
-    "Flings enemies very far away. Dev-only petal.",
+    
     "Permanently stuns enemies.",
     "Chinese love it.",
     "Shell copycat.",
     "Too expensive for you.",
     "Burns.",
-    "You are hacker for obtaining this."
+    "You are hacker for obtaining this.",
+
+    "Obliterate any enemy. Dev-only petal.",
+    "OP. Spawns a pet T-rex to protect you. Dev-only petal.",
+    "Permanently stuns enemies. Dev-only petal.",
+    "Flings enemies very far away. Dev-only petal.",
 };
 
 struct rr_mob_data RR_MOB_DATA[rr_mob_id_max] = {
@@ -212,8 +216,8 @@ struct rr_mob_data RR_MOB_DATA[rr_mob_id_max] = {
     {rr_mob_id_beehive,            rr_rarity_id_common, rr_rarity_id_max - 1,   0,  0, 45.0f, rr_rarity_id_common, rr_rarity_id_max,    rr_rarity_id_max,     {{rr_petal_id_wax,     0.05},{rr_petal_id_azalea,    0.05}, {rr_petal_id_beehive_egg, 0.1}}},
     {rr_mob_id_spider,             rr_rarity_id_common, rr_rarity_id_max - 1,  20, 25, 19.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_common,     {{rr_petal_id_web,      0.1},{rr_petal_id_third_eye, 0.01}, {rr_petal_id_berry, 0.08}, {rr_petal_id_spider_egg, 0.1}}},
     {rr_mob_id_house_centipede,    rr_rarity_id_common, rr_rarity_id_max - 1,  25, 10, 23.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_legendary,     {{rr_petal_id_peas,     0.1},{rr_petal_id_sand,      0.05}, {rr_petal_id_eggTest, 0.08}, /*don't add centi egg, it's buggy, not worth it*/}},
-    {rr_mob_id_lanternfly,         rr_rarity_id_common, rr_rarity_id_max - 1,  35, 15, 25.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_epic,     {{rr_petal_id_mint,     0.1},{rr_petal_id_sand,      0.05}, {rr_petal_id_lanternfly_egg, 0.1}}},
-    {rr_mob_id_pectinodon,         rr_rarity_id_common, rr_rarity_id_max - 1,  35, 10, 25.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_exotic,       {{rr_petal_id_stick,   0.05},{rr_petal_id_feather,    0.1},{rr_petal_id_wax,       0.05}}},
+    {rr_mob_id_lanternfly,         rr_rarity_id_common, rr_rarity_id_max - 1,  30, 10, 25.0f, rr_rarity_id_common, rr_rarity_id_common,    rr_rarity_id_epic,     {{rr_petal_id_mint,     0.1},{rr_petal_id_sand,      0.05}, {rr_petal_id_lanternfly_egg, 0.1}}},
+    {rr_mob_id_pectinodon,         rr_rarity_id_common, rr_rarity_id_max - 1,  35, 10, 25.0f, rr_rarity_id_common, rr_rarity_id_common, rr_rarity_id_exotic,       {{rr_petal_id_stick,   0.05},{rr_petal_id_feather,    0.1},{rr_petal_id_wax,       0.05}, {rr_petal_id_pecti_egg, 0.1}}},
 };
 
 char const *RR_MOB_NAMES[rr_mob_id_max] = {

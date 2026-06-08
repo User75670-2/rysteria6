@@ -162,18 +162,24 @@ enum rr_petal_id
     rr_petal_id_spider_egg, // 48
     rr_petal_id_house_centipede_egg, // 49
     rr_petal_id_lanternfly_egg, // 50
-    rr_petal_id_obliterator, // 51
-    rr_petal_id_eggOP, // 52
-    rr_petal_id_eggTest, // 53
-    rr_petal_id_permastun, // 54
-    rr_petal_id_superfling, // 55
-    rr_petal_id_permastun_obtainable, // 56
-    rr_petal_id_rice,      // 57
-    rr_petal_id_missile,   // 58
-    rr_petal_id_gleaf,    // 59
-    rr_petal_id_stick, // 61
-    rr_petal_id_hmissile,   // 60
-    rr_petal_id_max,       // 62
+    rr_petal_id_pecti_egg, // 51
+    rr_petal_id_eggTest, // 52
+    rr_petal_id_permastun_obtainable, // 53
+    rr_petal_id_rice,      // 54
+    rr_petal_id_missile,   // 55
+    rr_petal_id_gleaf,    // 56
+    rr_petal_id_stick, // 57
+
+    // misc
+    rr_petal_id_hmissile,   // 58
+        
+    // dev cheats (petals form)
+    rr_petal_id_obliterator, // 59
+    rr_petal_id_eggOP, // 60
+    rr_petal_id_permastun, // 61
+    rr_petal_id_superfling, // 62
+
+    rr_petal_id_max,       // 63
 };
 
 enum rr_mob_id

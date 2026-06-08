@@ -70,14 +70,6 @@ static uint8_t can_craft(struct rr_game *game)
            game->crafting_data.success_count == 0 &&
            game->crafting_data.count >= PETALS_PER_CRAFT &&
            game->crafting_data.crafting_id != 0 &&
-           // uncraftable petals (unobtainable)
-           game->crafting_data.crafting_id != rr_petal_id_obliterator  &&
-           game->crafting_data.crafting_id != rr_petal_id_eggOP &&
-           game->crafting_data.crafting_id != rr_petal_id_eggTest &&
-           game->crafting_data.crafting_id != rr_petal_id_permastun&&
-           game->crafting_data.crafting_id != rr_petal_id_superfling &&
-           game->crafting_data.crafting_id != rr_petal_id_hmissile  &&
-
            game->crafting_data.crafting_rarity < rr_rarity_id_max - 1 &&
            game->crafting_data.animation == 0 &&
            !game->crafting_data.autocraft;

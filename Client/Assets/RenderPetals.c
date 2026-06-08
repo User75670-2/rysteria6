@@ -686,6 +686,15 @@ void rr_renderer_draw_petal(struct rr_renderer *renderer, uint8_t id,
             rr_renderer_fill(renderer);
             rr_renderer_stroke(renderer);
             break;
+        case rr_petal_id_pecti_egg:
+            rr_renderer_set_stroke(renderer, 0xff34251c);
+            rr_renderer_set_fill(renderer, 0xff54453c);
+            rr_renderer_set_line_width(renderer, 3);
+            rr_renderer_begin_path(renderer);
+            rr_renderer_arc(renderer, 0, 0, 12);
+            rr_renderer_fill(renderer);
+            rr_renderer_stroke(renderer);
+            break;
         case rr_petal_id_eggOP:
             rr_renderer_set_stroke(renderer, 0xffb08a48);
             rr_renderer_set_fill(renderer, 0xffddad5a);
