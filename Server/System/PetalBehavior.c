@@ -858,9 +858,59 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     }
     else if (petal->id == rr_petal_id_eggTest)
     {
-        char mobs[] = {rr_mob_id_trex, rr_mob_id_dakotaraptor, rr_mob_id_pteranodon, rr_mob_id_fern, rr_mob_id_tree, rr_mob_id_ankylosaurus, rr_mob_id_triceratops, rr_mob_id_quetzalcoatlus, rr_mob_id_edmontosaurus, rr_mob_id_pachycephalosaurus, rr_mob_id_ornithomimus, rr_mob_id_meteor, rr_mob_id_ant, rr_mob_id_hornet, rr_mob_id_dragonfly, rr_mob_id_honeybee, rr_mob_id_spider, rr_mob_id_house_centipede, rr_mob_id_lanternfly};
-        m_id = mobs[rand() % 19];
-        m_rar = petal->rarity >= 0 ? petal->rarity - 1 : 0;
+        char mobs[] = {
+            rr_mob_id_trex, 
+            rr_mob_id_dakotaraptor, 
+            rr_mob_id_pteranodon, 
+            rr_mob_id_fern, 
+            rr_mob_id_tree, 
+            rr_mob_id_ankylosaurus, 
+            rr_mob_id_triceratops, 
+            rr_mob_id_quetzalcoatlus, 
+            rr_mob_id_edmontosaurus, 
+            rr_mob_id_pachycephalosaurus, 
+            rr_mob_id_ornithomimus, 
+            rr_mob_id_meteor, 
+            rr_mob_id_ant, 
+            rr_mob_id_hornet, 
+            rr_mob_id_dragonfly, 
+            rr_mob_id_honeybee, 
+            rr_mob_id_spider, 
+            rr_mob_id_lanternfly
+        
+            // rr_mob_id_house_centipede, // bugged, don't enable
+        };
+        char mob = mobs[rand() % 18];
+        int pet_rarity;
+        switch (mob) {
+            case rr_mob_id_trex:
+            case rr_mob_id_dakotaraptor:
+            case rr_mob_id_pteranodon:
+            case rr_mob_id_ankylosaurus:
+            case rr_mob_id_triceratops:
+            case rr_mob_id_quetzalcoatlus:
+            case rr_mob_id_edmontosaurus:
+            case rr_mob_id_pachycephalosaurus:
+            case rr_mob_id_meteor:
+            case rr_mob_id_ant:
+            case rr_mob_id_hornet:
+            case rr_mob_id_dragonfly:
+            case rr_mob_id_honeybee:
+            case rr_mob_id_spider:
+            case rr_mob_id_lanternfly:
+                pet_rarity = petal->rarity >= 0 ? petal->rarity - 1 : 0;
+                break;
+            case rr_mob_id_fern:
+            case rr_mob_id_tree:
+            case rr_mob_id_ornithomimus:
+                pet_rarity = petal->rarity;
+                break;
+            default:
+                pet_rarity = petal->rarity >= 0 ? petal->rarity - 1 : 0;
+                break;
+        }
+        m_id = mob;
+        m_rar = pet_rarity;
     }
     else if (petal->id == rr_petal_id_meteor)
     {

@@ -122,3 +122,9 @@ void rr_lanternfly_wing1_draw(struct rr_renderer *);
 void rr_lanternfly_abdomen_draw(struct rr_renderer *);
 void rr_lanternfly_leg_draw(struct rr_renderer *);
 void rr_lanternfly_head_draw(struct rr_renderer *);
+
+void rr_pectinodon_body_draw(struct rr_renderer *);
+void rr_pectinodon_wing1_draw(struct rr_renderer *);
+void rr_pectinodon_wing2_draw(struct rr_renderer *);
+void rr_pectinodon_head_draw(struct rr_renderer *);
+void rr_pectinodon_tail_draw(struct rr_renderer *);

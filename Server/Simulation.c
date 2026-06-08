@@ -93,13 +93,13 @@ uint8_t pter_zone()
 {
     return rr_frand() > 0.2 ? rr_mob_id_pteranodon : ALL_MOBS;
 }
-uint8_t trex_zone()
+uint8_t trex_pecti_zone()
 {
-    return rr_frand() > 0.03 ? rr_mob_id_trex : rr_mob_id_tree;
+    return rr_frand() > 0.4 ? rr_mob_id_trex : rr_mob_id_pectinodon;
 }
-uint8_t quetz_zone()
+uint8_t quetz_pecti_zone()
 {
-    return rr_frand() > 0.2 ? rr_mob_id_quetzalcoatlus : rr_mob_id_fern;
+    return rr_frand() > 0.3 ? rr_mob_id_quetzalcoatlus : rr_mob_id_pectinodon;
 }
 uint8_t fern_pachy_zone()
 {
@@ -132,7 +132,7 @@ uint8_t pachy_rex_tree_zone() {
     return seed > 
     0.4 ? rr_mob_id_pachycephalosaurus : seed > 0.0078 ? rr_mob_id_trex : rr_mob_id_tree;
 }
-uint8_t pter_fern() {
+uint8_t pter_fern_trex() {
     float seed = rr_frand();
     return seed > 0.25 ? rr_mob_id_pteranodon : seed > 0.1 ? rr_mob_id_trex : rr_mob_id_fern;
 }
@@ -154,6 +154,9 @@ uint8_t meteor_pter_anky() {
     : seed > 0.405
     ? rr_mob_id_pteranodon
     : ALL_MOBS;
+}
+uint8_t dako_spider_pecti_zone() { 
+    return rr_frand() > 0.5 ? rr_mob_id_pectinodon : rr_frand() > 0.3 ? rr_mob_id_dakotaraptor : rr_mob_id_spider; 
 }
 uint8_t garden_zone()
 {
@@ -199,6 +202,9 @@ uint8_t hornet_bee_beehive_zone() {
 uint8_t lanternfly_centi() {
     return rr_frand() > 0.2 ? rr_mob_id_lanternfly : rr_mob_id_house_centipede;
 }
+uint8_t dragonfly_spider() {
+    return rr_frand() > 0.4 ? rr_mob_id_spider : rr_mob_id_dragonfly;
+}
 struct zone
 {
     uint32_t x;
@@ -208,7 +214,7 @@ struct zone
     uint8_t (*spawn_func)();
 };
 //                            garden zones    hell creek special zones    garden special zones   
-#define ZONE_POSITION_COUNT       10         +          13           +            6
+#define ZONE_POSITION_COUNT       10         +          14          +            7
 
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
 
@@ -236,31 +242,33 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {10, 13, 3,  2, edmo_zone},
     // // // {19, 33, 5,  2, tree_zone},
     // // // {16, 35, 11, 4, tree_zone},
-    {1, 21, 2,  2, trex_zone},
-    {21, 21,  2,  3, quetz_zone},
+    {0, 6, 1,  2, trex_pecti_zone},
+    {21, 21,  2,  3, quetz_pecti_zone},
     // {3,  22,  3,  3, fern_pachy_zone},
     // // {7,  5,  4,  5, fern_pachy_zone},
     {12, 23,  4,  2, anky_zone},
     // // // {32, 9,  5,  2, anky_zone},
     {14, 9,  3,  2, pter_edmo_zone},
     // // // {10, 34, 3,  2, pachy_orni_zone},
-    {10, 5, 2,  3, dako_orni_zone},
+    {8, 6, 2,  2, dako_orni_zone},
     {4, 11, 2,  2, pter_bee_zone},
     {23, 24, 3,  1, pachy_rex_tree_zone},
-    {16, 24, 3,  4, pter_fern},
+    {16, 24, 3,  4, pter_fern_trex},
     // {37, 28, 3,  4, trex_dako_pter_zone},
     {25, 15, 2,  2, dako_quetz_zone},
     // {1, 0, 4, 2, meteor_pter_anky},
-    // {12, 15, 3, 3, trice_quetz_fern}
+    // {12, 15, 3, 3, trice_quetz_fern},
+    {5, 20, 6, 3, dako_spider_pecti_zone},
 
         // garden
 
     {17, 6, 3, 3, ant_centi_zone},
-    {27, 13, 2, 3 , spider_lanternfly_zone},
+    {27, 11, 2, 5 , spider_lanternfly_zone},
     {25, 0, 3, 4, hornet_pter_zone},
     {34, 7, 2, 3, dragonfly_quetz_zone},
     {38, 19, 2, 4, hornet_bee_beehive_zone},
-    {30, 29, 2, 3, lanternfly_centi}
+    {30, 29, 2, 3, lanternfly_centi},
+    {14, 0, 1, 3, dragonfly_spider},
 };
 
 static void set_spawn_zones()

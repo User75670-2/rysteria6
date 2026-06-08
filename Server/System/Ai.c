@@ -132,6 +132,9 @@ static void system_for_each(EntityIdx entity, void *simulation)
     case rr_mob_id_lanternfly:
         tick_ai_default(entity, this, RR_PLAYER_SPEED);
         break;
+    case rr_mob_id_pectinodon:
+        tick_ai_pectinodon(entity, this);
+        break;
     case rr_mob_id_fern:
     case rr_mob_id_tree:
     case rr_mob_id_edmontosaurus:

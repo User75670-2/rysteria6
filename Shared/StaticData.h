@@ -162,17 +162,18 @@ enum rr_petal_id
     rr_petal_id_spider_egg, // 48
     rr_petal_id_house_centipede_egg, // 49
     rr_petal_id_lanternfly_egg, // 50
-    rr_petal_id_obliterator, // ??
-    rr_petal_id_eggOP, // ??
-    rr_petal_id_eggTest, // ??
-    rr_petal_id_permastun, // ??
-    rr_petal_id_superfling, // ??
-    rr_petal_id_permastun_obtainable, // ??
-    rr_petal_id_rice,      // ??
-    rr_petal_id_missile,   // ??
-    rr_petal_id_gleaf,    // ??
-    rr_petal_id_hmissile,   // ??
-    rr_petal_id_max,       // ??
+    rr_petal_id_obliterator, // 51
+    rr_petal_id_eggOP, // 52
+    rr_petal_id_eggTest, // 53
+    rr_petal_id_permastun, // 54
+    rr_petal_id_superfling, // 55
+    rr_petal_id_permastun_obtainable, // 56
+    rr_petal_id_rice,      // 57
+    rr_petal_id_missile,   // 58
+    rr_petal_id_gleaf,    // 59
+    rr_petal_id_stick, // 61
+    rr_petal_id_hmissile,   // 60
+    rr_petal_id_max,       // 62
 };
 
 enum rr_mob_id
@@ -198,8 +199,9 @@ enum rr_mob_id
     rr_mob_id_spider,             // 17
     rr_mob_id_house_centipede,    // 18
     rr_mob_id_lanternfly,         // 19
+    rr_mob_id_pectinodon, // 20
 
-    rr_mob_id_max,                // 20
+    rr_mob_id_max,                // 21
 };
 
 struct rr_petal_base_stat_scale
