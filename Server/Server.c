@@ -546,8 +546,9 @@ static int handle_lws_event(struct rr_server *this, struct lws *ws,
                                   "oauth2 code");
 
 #ifndef SANDBOX
-if (
-                strcmp(client->rivet_account.token, getenv("DEV_TOKEN")) == 0
+const char *dev_token = getenv("DEV_TOKEN");
+if (dev_token != NULL &&
+                strcmp(client->rivet_account.token, dev_token) == 0
             )
 #endif
                 client->dev = 1;

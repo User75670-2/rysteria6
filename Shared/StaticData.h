@@ -119,6 +119,25 @@ enum rr_petal_id
     rr_petal_id_peas,      // 7
     rr_petal_id_leaf,      // 8
     rr_petal_id_egg,       // 9
+    rr_petal_id_dako_egg,  // 33
+    rr_petal_id_pter_egg,  // 34
+    rr_petal_id_fern_egg,  // 35
+    rr_petal_id_tree_egg,  // 36
+    rr_petal_id_anky_egg,  // 37
+    rr_petal_id_trice_egg, // 38
+    rr_petal_id_quetz_egg,    // 39
+    rr_petal_id_edmo_egg,  // 40
+    rr_petal_id_pachy_egg, // 41
+    rr_petal_id_orni_egg, // 42
+    rr_petal_id_ant_egg, // 43
+    rr_petal_id_hornet_egg, // 44
+    rr_petal_id_dragonfly_egg, // 45
+    rr_petal_id_honeybee_egg, // 46
+    rr_petal_id_beehive_egg, // 47
+    rr_petal_id_spider_egg, // 48
+    rr_petal_id_lanternfly_egg, // 50
+    rr_petal_id_pecti_egg, // 51
+    rr_petal_id_eggTest, // 52
     rr_petal_id_magnet,    // 10
     rr_petal_id_uranium,   // 11
     rr_petal_id_feather,   // 12
@@ -143,27 +162,6 @@ enum rr_petal_id
     rr_petal_id_wax,       // 30
     rr_petal_id_sand,      // 31
     rr_petal_id_mint,      // 32
-
-    rr_petal_id_dako_egg,  // 33
-    rr_petal_id_pter_egg,  // 34
-    rr_petal_id_fern_egg,  // 35
-    rr_petal_id_tree_egg,  // 36
-    rr_petal_id_anky_egg,  // 37
-    rr_petal_id_trice_egg, // 38
-    rr_petal_id_quetz_egg,    // 39
-    rr_petal_id_edmo_egg,  // 40
-    rr_petal_id_pachy_egg, // 41
-    rr_petal_id_orni_egg, // 42
-    rr_petal_id_ant_egg, // 43
-    rr_petal_id_hornet_egg, // 44
-    rr_petal_id_dragonfly_egg, // 45
-    rr_petal_id_honeybee_egg, // 46
-    rr_petal_id_beehive_egg, // 47
-    rr_petal_id_spider_egg, // 48
-    rr_petal_id_house_centipede_egg, // 49
-    rr_petal_id_lanternfly_egg, // 50
-    rr_petal_id_pecti_egg, // 51
-    rr_petal_id_eggTest, // 52
     rr_petal_id_permastun_obtainable, // 53
     rr_petal_id_rice,      // 54
     rr_petal_id_missile,   // 55
@@ -178,6 +176,10 @@ enum rr_petal_id
     rr_petal_id_eggOP, // 60
     rr_petal_id_permastun, // 61
     rr_petal_id_superfling, // 62
+    
+    // buggy
+    rr_petal_id_house_centipede_egg, // 49
+
 
     rr_petal_id_max,       // 63
 };
