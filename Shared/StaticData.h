@@ -320,7 +320,7 @@ struct rr_maze_declaration
     float grid_size;
     struct rr_maze_grid *maze;
     uint8_t checkpoint_count;
-    struct rr_checkpoint checkpoints[8 + 7];
+    struct rr_checkpoint checkpoints[100];
 };
 
 #define RR_DECLARE_MAZE(name, size)                                            \
@@ -332,7 +332,6 @@ RR_DECLARE_MAZE(HELL_CREEK, 80)
 RR_DECLARE_MAZE(BURROW, 4)
 
 extern struct rr_maze_declaration RR_MAZES[rr_biome_id_max];
-
 extern uint8_t RR_GLOBAL_BIOME;
 
 extern double RR_BASE_CRAFT_CHANCES[rr_rarity_id_max - 1];

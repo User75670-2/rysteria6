@@ -79,9 +79,9 @@ uint8_t trice_dako_zone()
     return rr_frand() > 0.2 ? rr_mob_id_dakotaraptor : rr_mob_id_triceratops;
 }
 
-uint8_t trex_anky_zone()
+uint8_t old_trex_anky_zone()
 {
-    return rr_frand() > 0.3 ? rr_mob_id_ankylosaurus : rr_mob_id_trex;
+    return rr_frand() > 0.2 ? rr_mob_id_ankylosaurus : rr_mob_id_trex;
 }
 uint8_t edmo_zone() { return rr_mob_id_edmontosaurus; }
 // ~x6 tree chance
@@ -214,61 +214,64 @@ struct zone
     uint8_t (*spawn_func)();
 };
 //                            garden zones    hell creek special zones    garden special zones   
-#define ZONE_POSITION_COUNT       10         +          14          +            7
+#define ZONE_POSITION_COUNT       0         +          12          +            0
 
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
 
     // garden zone
 
-    {11, 0, 29, 6, garden_zone},
-    {14, 6, 26, 3, garden_zone},
-    {21, 9, 19, 3, garden_zone},
-    {24, 12, 16, 3, garden_zone},
-    {28, 15, 12, 2, garden_zone},
-    {30, 17, 10, 4, garden_zone},
-    {33, 21, 7, 19, garden_zone},
-    {24, 27, 9, 13, garden_zone},
-    {23, 36, 1, 4, garden_zone},
-    {21, 29, 3, 7, garden_zone},
+    // {11, 0, 29, 6, garden_zone},
+    // {14, 6, 26, 3, garden_zone},
+    // {21, 9, 19, 3, garden_zone},
+    // {24, 12, 16, 3, garden_zone},
+    // {28, 15, 12, 2, garden_zone},
+    // {30, 17, 10, 4, garden_zone},
+    // {33, 21, 7, 19, garden_zone},
+    // {24, 27, 9, 13, garden_zone},
+    // {23, 36, 1, 4, garden_zone},
+    // {21, 29, 3, 7, garden_zone},
 
 
     // hell creek
 
-    {5, 0, 2,  2, fern_tree_zone},
-    {7, 10, 5,  2, pter_meteor_zone},
-    {0, 14, 2,  6, trice_dako_zone},
-    // // {35, 5, 5,  2, trex_anky_zone},
-    // {37, 4, 3,  2, trex_anky_zone},
-    {10, 13, 3,  2, edmo_zone},
-    // // // {19, 33, 5,  2, tree_zone},
-    // // // {16, 35, 11, 4, tree_zone},
-    {0, 6, 1,  2, trex_pecti_zone},
-    {21, 21,  2,  3, quetz_pecti_zone},
-    // {3,  22,  3,  3, fern_pachy_zone},
-    // // {7,  5,  4,  5, fern_pachy_zone},
-    {12, 23,  4,  2, anky_zone},
-    // // // {32, 9,  5,  2, anky_zone},
-    {14, 9,  3,  2, pter_edmo_zone},
-    // // // {10, 34, 3,  2, pachy_orni_zone},
-    {8, 6, 2,  2, dako_orni_zone},
-    {4, 11, 2,  2, pter_bee_zone},
-    {23, 24, 3,  1, pachy_rex_tree_zone},
-    {16, 24, 3,  4, pter_fern_trex},
-    // {37, 28, 3,  4, trex_dako_pter_zone},
-    {25, 15, 2,  2, dako_quetz_zone},
-    // {1, 0, 4, 2, meteor_pter_anky},
-    // {12, 15, 3, 3, trice_quetz_fern},
-    {5, 20, 6, 3, dako_spider_pecti_zone},
+    {2, 36, 2,  2, fern_tree_zone},
+    {2, 27, 7,  3, pter_meteor_zone},
+    {15,32, 3,  2, old_trex_anky_zone},
+    {23, 34, 4,  2, trice_dako_zone},
+    {25, 23, 3,  2, pter_fern_trex},
+    {30, 28,  3,  4, anky_zone},
+    {1, 17,  3,  2, quetz_pecti_zone},
+    {5, 12, 4,  3, dako_quetz_zone},
+    {1, 11, 3, 5, dako_quetz_zone},
+    {13, 9, 3, 4, meteor_pter_anky},
+    {38, 21,  2,  4, pter_edmo_zone},
+    {26, 19, 2, 3, trice_quetz_fern},
 
-        // garden
 
-    {17, 6, 3, 3, ant_centi_zone},
-    {27, 11, 2, 5 , spider_lanternfly_zone},
-    {25, 0, 3, 4, hornet_pter_zone},
-    {34, 7, 2, 3, dragonfly_quetz_zone},
-    {38, 19, 2, 4, hornet_bee_beehive_zone},
-    {30, 29, 2, 3, lanternfly_centi},
-    {14, 0, 1, 3, dragonfly_spider},
+    // // {37, 4, 3,  2, trex_anky_zone},
+    // {10, 13, 3,  2, edmo_zone},
+    // // // // {19, 33, 5,  2, tree_zone},
+    // // // // {16, 35, 11, 4, tree_zone},
+    // {0, 6, 1,  2, trex_pecti_zone},
+    // // {3,  22,  3,  3, fern_pachy_zone},
+    // // // {7,  5,  4,  5, fern_pachy_zone},
+    // // // // {32, 9,  5,  2, anky_zone},
+    // // // // {10, 34, 3,  2, pachy_orni_zone},
+    // {8, 6, 2,  2, dako_orni_zone},
+    // {4, 11, 2,  2, pter_bee_zone},
+    // {23, 24, 3,  1, pachy_rex_tree_zone},
+    // // {37, 28, 3,  4, trex_dako_pter_zone},
+    // {5, 20, 6, 3, dako_spider_pecti_zone},
+
+    //     // garden
+
+    // {17, 6, 3, 3, ant_centi_zone},
+    // {27, 11, 2, 5 , spider_lanternfly_zone},
+    // {25, 0, 3, 4, hornet_pter_zone},
+    // {34, 7, 2, 3, dragonfly_quetz_zone},
+    // {38, 19, 2, 4, hornet_bee_beehive_zone},
+    // {30, 29, 2, 3, lanternfly_centi},
+    // {14, 0, 1, 3, dragonfly_spider},
 };
 
 static void set_spawn_zones()

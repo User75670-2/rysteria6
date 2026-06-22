@@ -111,27 +111,29 @@ void rr_component_petal_render(EntityIdx entity, struct rr_game *game,
         }
         else
         {
-            switch(petal->rarity)
-            {
-                case rr_rarity_id_exotic:
-                    particle->color = 0xffff2b75;
-                    break;
-                case rr_rarity_id_ultimate:
-                    particle->color = 0xff2bffa3;
-                    break;
-                case rr_rarity_id_eternal:
-                    particle->color = 0xff3000af;
-                    break;
-                case rr_rarity_id_astral:
-                    particle->color = 0xffffff9f;
-                    break;
-                case rr_rarity_id_atomic:
-                    particle->color = 0xff101010;
-                    break;
-                default:
-                    particle->color = 0xffffffff;
-                    break;
-            }
+            particle->color = RR_RARITY_COLORS[petal->rarity];
+            // switch(petal->rarity)
+            // {
+            //     case rr_rarity_id_exotic:
+            //         particle->color = 0xffff2b75;
+            //         break;
+            //     case rr_rarity_id_ultimate:
+            //         particle->color = 0xff2bffa3;
+            //         break;
+            //     case rr_rarity_id_eternal:
+            //         particle->color = 0xff3000af;
+            //         break;
+            //     case rr_rarity_id_astral:
+            //         particle->color = 0xffffff9f;
+            //         break;
+            //     case rr_rarity_id_atomic:
+            //         particle->color = 0xffff7500;
+            //         break;
+            //     default:
+            //         particle->color = 0xffffffff;
+            //         break;
+            // }
+
         }   
     }
     if (petal->id == rr_petal_id_stick)

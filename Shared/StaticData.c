@@ -58,7 +58,7 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_fossil,    rr_rarity_id_common,    offensive,  5.0f, 150.0f,   0.0f, 100,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_stinger,   rr_rarity_id_common,    offensive, 70.0f,   3.0f,  10.0f, 150,  0, {1,1,1,1,1,3,5,5,6,6,6}},
     {rr_petal_id_berry,     rr_rarity_id_rare,      offensive,  5.0f,   5.0f,  12.0f,  13,  0, {1,1,1,1,1,2,3,3,4,4,5}},
-    {rr_petal_id_shell,     rr_rarity_id_rare,      offensive, 30.0f,  16.0f,   0.0f,  100, 13, {1,1,1,1,2,2,3,3,4,4,5}},
+    {rr_petal_id_shell,     rr_rarity_id_rare,      offensive, 30.0f,  16.0f,   0.0f,  75, 13, {1,1,1,1,2,2,3,3,4,4,5}},
     {rr_petal_id_peas,      rr_rarity_id_rare,      offensive, 22.0f,  12.0f,   8.0f,  13, 12, {4,4,4,4,4,4,5,5,5,6,6}},
     {rr_petal_id_leaf,      rr_rarity_id_unusual,   offensive,  9.0f,  8.0f,   8.0f,  38,  0, {1,1,1,1,2,2,3,3,3,3,4}},
     {rr_petal_id_egg,       rr_rarity_id_common,   defensive,  1.0f,  75.0f,  10.0f,  25,100,  {1,4,3,3,3,2,2,2,2,2,2}},
@@ -311,7 +311,7 @@ struct rr_mob_rarity_scale RR_MOB_RARITY_SCALING[rr_rarity_id_max] = {
 uint32_t RR_RARITY_COLORS[rr_rarity_id_max] = {
     0xff7eef6d, 0xffffe65d, 0xff4d52e3, 0xff861fde,
     0xffde1f1f, 0xff1fdbde, 0xffff2b75, 0xff2bffa3, 
-    0xff3000af, 0xffffff9f, 0xff101010};
+    0xff3000af, 0xffffff9f, 0xffff7500};
 
 char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
     "Common",    "Unusual", "Rare",   "Epic",
@@ -547,7 +547,7 @@ static void print_chances(float difficulty)
     }
 }
 
-double RR_BASE_CRAFT_CHANCES[rr_rarity_id_max - 1] = {0.7,  0.5,  0.25, 0.16,
+double RR_BASE_CRAFT_CHANCES[rr_rarity_id_max - 1] = {0.7,  0.5,  0.3, 0.16,
                                                       0.09, 0.07, 0.05, 0.03, 0.02, 0.01};
 double RR_CRAFT_CHANCES[rr_rarity_id_max - 1];
 
@@ -803,6 +803,7 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {x,x,x,M,M,M,M,M,M,M,M,M,M,_,_,_,_,m,m,m,m,_,_,m,m,m,m,m,m,_,m,m,m,_,_,m,m,m,m,m}, // 38
 {x,x,x,M,M,M,M,M,M,M,M,_,_,_,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m,m}, // 39
 */
+/*
 {c,c,C,C,u,u,u,u,u,u,u,_,_,_,e,_,_,_,_,_,e,_,_,_,_,m,L,m,_,l,l,_,_,_,L,L,_,_,_,_}, // 0
 {c,c,C,C,u,u,u,_,U,_,u,u,u,_,R,_,r,r,r,_,e,e,e,_,_,_,L,_,_,_,l,l,l,_,L,L,L,L,_,_}, // 1
 {_,_,C,u,u,u,_,_,U,_,_,_,u,_,R,r,r,_,R,R,R,_,e,e,e,_,L,l,_,l,l,_,l,l,l,L,L,L,L,_}, // 2
@@ -844,48 +845,48 @@ RR_DEFINE_MAZE(HELL_CREEK, 80) = {
 {S,S,S,_,_,S,_,_,T,t,t,t,_,t,t,t,_,_,_,A,_,A,_,_,o,o,O,_,_,T,_,t,_,t,t,_,_,_,_,T}, // 38
 {S,S,S,S,S,S,_,T,T,t,t,t,t,t,t,t,t,t,A,A,A,A,A,_,_,_,_,_,T,T,_,t,t,t,t,t,t,t,T,T}, // 39
 };
-/*
-    {s,T,T,T,T,T,T,t,t,t,t,t,t,T,T,T,T,T,T,T,T,T,T,s,s,s,s,_,O,O,O,O,O,o,o,o,o,o,o,o},
-    {s,s,T,T,_,_,_,_,t,t,t,t,t,t,T,_,_,_,_,T,T,T,T,_,s,s,s,_,_,O,O,O,O,o,o,o,o,o,o,o},
-    {_,s,_,_,_,_,_,_,_,A,A,t,t,t,_,_,T,T,_,T,T,T,T,_,_,s,s,s,_,_,O,O,O,o,o,o,o,o,o,o},
-    {_,_,_,A,A,A,A,A,_,_,A,A,t,t,_,T,T,_,_,_,_,T,T,T,_,_,_,s,s,_,_,_,_,_,_,_,_,_,o,o},
+*/
+    {T,T,T,T,T,T,T,t,t,t,t,t,t,T,T,T,T,T,T,T,T,T,T,s,s,s,s,_,O,O,O,O,O,o,o,o,o,o,o,o},
+    {T,T,T,T,_,_,_,_,t,t,t,t,t,t,T,_,_,_,_,T,T,T,T,_,s,s,s,_,_,O,O,O,O,o,o,o,o,o,o,o},
+    {_,T,_,_,_,_,_,_,_,A,A,t,t,t,_,_,t,t,_,T,T,T,T,_,_,s,s,s,_,_,O,O,O,o,o,o,o,o,o,o},
+    {_,_,_,A,A,A,A,A,_,_,A,A,t,t,_,t,t,_,_,_,_,T,T,T,_,_,_,s,s,_,_,_,_,_,_,_,_,_,o,o},
     {_,A,A,A,A,A,_,_,_,_,A,_,t,t,t,t,t,_,T,_,T,T,_,T,s,s,_,_,s,s,s,s,s,s,S,S,S,_,_,S},
     {A,A,A,A,A,_,_,_,A,A,A,_,t,t,t,t,t,T,T,_,s,_,_,_,s,s,s,_,_,_,_,s,s,S,S,S,S,S,_,S},
-    {A,_,a,a,_,_,_,_,A,A,A,_,_,t,_,_,T,T,T,_,s,s,s,_,_,_,s,_,A,A,_,s,s,S,S,S,S,S,S,S},
-    {A,_,a,_,_,A,A,_,_,A,A,A,_,_,_,T,T,T,T,_,s,_,s,s,_,s,s,_,A,A,_,_,_,S,S,S,S,S,S,S},
-    {_,_,a,_,a,a,a,a,_,A,_,A,A,A,_,_,T,_,_,_,s,_,_,s,_,s,_,_,A,A,a,a,_,_,_,_,S,S,S,S},
-    {a,a,a,_,a,a,a,a,a,a,_,_,A,a,a,_,_,_,s,s,s,s,_,s,s,s,_,A,A,A,_,a,a,a,a,_,_,_,_,_},
-    {a,_,a,a,a,_,_,_,a,a,a,_,_,a,a,a,_,_,_,_,s,_,_,_,_,_,_,A,A,_,_,_,_,a,a,a,a,a,X,X},
-    {a,_,_,X,_,_,_,_,_,a,a,_,_,_,a,a,_,o,o,_,_,_,O,_,s,s,_,A,_,_,s,s,_,_,a,a,a,a,X,X},
-    {_,_,X,X,_,_,a,a,_,_,a,a,_,a,a,a,_,_,o,_,o,o,o,_,s,s,_,A,_,_,s,s,T,_,a,a,a,X,X,X},
-    {_,X,X,_,_,a,a,a,X,_,a,a,a,a,a,a,a,_,S,S,S,_,_,_,T,_,_,A,_,T,T,T,T,_,_,a,X,X,X,X},
-    {_,_,X,X,_,_,a,a,X,X,X,X,X,X,X,X,X,_,S,S,_,_,T,T,T,_,t,t,_,_,T,T,_,_,X,X,X,X,X,X},
-    {_,_,_,X,X,_,_,X,X,X,X,_,_,_,X,X,_,_,S,s,s,_,T,T,_,_,t,t,t,_,T,_,_,a,a,a,_,_,_,X},
-    {_,_,_,_,X,X,X,X,X,_,_,_,X,X,X,_,_,S,S,_,s,s,T,T,T,T,t,t,t,t,T,_,a,a,_,_,_,X,X,X},
-    {_,X,X,_,_,X,X,X,_,_,_,X,X,X,_,_,o,o,_,_,s,s,_,T,_,_,t,t,t,t,T,_,_,_,_,X,X,X,_,X},
-    {_,X,X,X,_,X,X,_,_,_,X,X,_,_,_,o,o,_,_,s,s,_,_,T,T,_,t,t,t,t,_,_,x,x,x,X,_,_,_,_},
+    {A,_,a,a,_,_,_,_,A,A,A,_,_,t,_,_,T,T,T,_,s,_,S,_,_,_,s,_,A,A,_,s,s,S,S,S,S,S,S,S},
+    {A,_,a,_,_,a,a,_,_,A,A,A,_,_,_,T,T,T,T,_,s,_,S,S,_,s,s,_,A,A,_,_,_,S,S,S,S,S,S,S},
+    {_,_,a,_,a,a,a,a,_,A,_,A,A,A,_,_,T,_,_,_,s,s,s,s,_,s,_,_,A,A,a,a,_,_,_,_,S,S,S,S},
+    {a,a,a,_,a,a,a,a,a,a,_,_,A,a,a,_,_,_,_,_,_,s,_,s,s,s,_,A,A,A,_,a,a,a,a,_,_,_,_,_},
+    {a,_,a,a,a,_,_,_,a,a,a,_,_,a,a,a,_,_,_,_,_,_,_,_,_,_,_,A,A,_,_,_,_,a,a,a,a,a,X,X},
+    {a,_,_,X,_,_,_,_,_,a,a,_,_,_,a,a,_,o,o,_,_,_,O,_,T,T,_,A,_,_,T,T,_,_,a,a,a,a,X,X},
+    {_,_,X,X,_,_,X,X,_,_,a,a,_,a,a,a,_,_,o,_,o,o,o,_,T,T,_,A,_,T,T,T,T,_,a,a,a,X,X,X},
+    {_,X,X,_,_,X,X,X,X,_,a,a,a,a,a,a,a,_,S,S,S,_,_,_,T,_,_,A,_,T,T,T,T,_,_,a,X,X,X,X},
+    {_,_,X,X,_,_,X,X,X,X,X,X,X,X,X,X,X,_,S,S,_,_,T,T,T,_,t,t,_,_,T,T,_,_,X,X,X,X,X,X},
+    {_,_,_,X,X,_,_,X,X,X,X,_,_,_,X,X,_,_,S,s,s,_,T,T,_,_,t,t,t,_,T,_,_,X,X,X,_,_,_,X},
+    {_,_,_,_,X,X,X,X,X,_,_,_,X,X,X,_,_,S,S,_,s,s,T,T,T,T,t,t,t,t,t,_,X,X,_,_,_,X,X,X},
+    {_,x,x,_,_,X,X,X,_,_,_,X,X,X,_,_,o,o,_,_,s,s,_,T,_,_,t,t,t,t,t,_,_,_,_,X,X,X,_,X},
+    {_,x,x,x,_,X,X,_,_,_,X,X,_,_,_,o,o,_,_,s,s,_,_,T,T,_,t,t,t,t,_,_,x,x,x,X,_,_,_,_},
     {x,x,x,x,x,x,x,x,_,x,x,_,_,_,O,O,_,_,S,S,s,_,s,s,s,_,t,t,_,_,_,x,x,x,x,X,X,X,X,X},
     {x,x,x,x,x,x,x,x,_,x,x,_,_,_,_,_,_,S,S,S,_,_,s,s,s,_,_,t,_,x,x,x,x,_,_,_,X,X,_,_},
     {_,_,x,x,x,x,x,x,x,x,_,_,_,_,_,_,_,_,_,S,_,s,s,s,s,s,_,t,_,x,x,_,_,_,M,_,X,X,_,M},
-    {M,_,_,x,x,x,x,_,_,_,_,_,M,m,m,_,m,m,_,_,_,S,S,S,_,_,_,_,_,x,x,x,_,M,M,_,X,_,_,M},
-    {M,_,_,_,x,x,_,_,M,M,M,_,M,_,m,_,m,m,m,m,_,_,S,S,_,m,m,m,_,_,_,x,_,M,M,_,_,_,M,M},
+    {M,_,_,x,x,x,x,_,_,_,_,_,M,m,m,_,m,m,_,_,_,S,S,S,_,_,_,_,_,_,x,x,_,M,M,_,X,_,_,M},
+    {M,_,_,_,x,x,_,_,M,M,M,_,M,_,m,_,m,m,m,m,_,_,S,_,_,m,m,m,_,_,_,x,_,M,M,_,_,_,M,M},
     {M,M,M,_,_,x,_,M,M,_,M,_,M,_,m,_,m,m,m,m,m,_,_,_,_,m,_,m,L,L,_,x,x,M,M,M,M,M,M,M},
     {_,M,M,M,M,M,M,M,M,_,M,_,M,_,m,m,m,_,_,m,m,m,m,m,m,m,_,_,_,L,_,x,x,M,M,M,_,_,M,M},
-    {_,_,_,_,_,_,_,_,_,_,M,M,M,_,_,_,_,_,_,m,_,L,L,_,_,_,_,_,_,L,_,x,x,_,_,_,_,m,m,m},
+    {_,_,_,_,_,_,_,_,_,_,M,M,M,_,_,_,_,_,_,m,_,L,L,_,_,_,_,_,_,L,_,_,x,_,_,_,_,m,m,m},
     {_,_,e,e,e,E,e,e,e,_,_,_,_,_,R,e,e,e,_,_,_,_,L,L,_,_,L,L,_,L,_,_,_,_,m,m,m,m,m,m},
     {_,R,e,_,_,_,_,_,e,_,R,R,R,R,R,R,_,e,_,e,_,_,L,L,L,L,L,L,L,L,_,m,m,_,_,m,m,_,_,m},
     {R,R,e,e,_,e,e,e,e,_,r,_,_,_,_,_,_,e,_,e,e,_,_,_,_,_,_,l,l,_,_,m,_,_,m,m,m,m,_,_},
     {R,R,_,_,_,R,R,_,_,_,r,_,R,R,_,_,e,e,e,e,E,E,_,E,E,_,_,l,l,_,m,m,m,m,m,_,_,m,_,m},
     {r,_,_,r,R,R,_,_,r,r,r,r,R,R,R,_,_,_,e,E,E,E,E,E,E,l,l,l,_,_,_,m,m,m,_,_,L,L,_,m},
-    {r,_,r,r,r,_,_,r,r,_,r,_,R,R,_,_,E,_,_,E,E,_,E,E,_,_,l,l,_,L,_,_,_,_,_,L,L,L,L,m},
-    {r,_,_,r,_,_,U,r,_,_,R,_,R,R,_,E,E,E,_,E,E,_,l,l,l,_,l,_,_,L,L,_,L,L,L,L,L,L,L,m},
-    {r,r,U,U,U,U,U,U,_,R,R,_,_,R,_,_,_,e,_,_,E,_,_,l,l,_,_,_,l,L,_,_,L,_,_,_,_,_,_,m},
+    {r,_,r,r,r,_,_,r,r,_,r,_,R,R,_,_,e,_,_,E,E,_,l,l,_,_,l,l,_,L,_,_,_,_,_,L,L,L,L,m},
+    {r,_,_,r,_,_,U,r,_,_,R,_,R,R,_,e,e,e,_,E,E,_,l,l,l,_,l,_,_,L,L,_,L,L,L,L,L,L,L,m},
+    {r,r,r,r,U,U,U,U,_,R,R,_,_,R,_,_,_,e,_,_,E,_,_,l,l,_,_,_,l,L,_,_,L,_,_,_,_,_,_,m},
     {_,_,_,_,_,U,_,_,_,_,R,R,_,e,e,e,e,e,_,_,E,_,_,l,l,l,l,_,l,_,_,L,L,_,M,M,M,M,_,m},
-    {c,_,u,u,_,u,_,U,U,_,_,r,_,_,_,_,e,_,_,_,E,E,_,_,_,l,_,_,l,_,_,L,L,_,M,_,_,M,_,m},
-    {c,_,u,u,u,u,u,U,U,_,r,r,_,E,E,_,e,e,_,_,_,E,E,E,E,E,E,E,l,_,l,L,L,_,M,_,M,M,_,m},
+    {c,_,u,u,_,U,_,U,U,_,_,r,_,_,_,_,e,_,_,_,E,E,_,_,_,E,_,_,l,_,_,L,L,_,M,_,_,M,_,m},
+    {c,_,u,u,u,u,u,U,U,_,r,r,_,E,E,_,e,e,_,_,_,E,E,E,E,E,E,E,l,_,l,l,l,_,M,_,M,M,_,m},
     {c,_,C,u,u,_,_,U,U,_,r,r,_,E,_,_,e,e,_,e,e,E,E,E,_,_,E,l,l,l,l,l,l,_,m,_,_,_,_,m},
     {C,C,C,C,u,_,U,U,r,r,r,r,_,E,E,e,e,e,e,e,_,_,_,_,_,l,l,l,l,l,l,l,l,_,m,m,m,m,m,m}
-*/
+};
 // clang-format on
 RR_DEFINE_MAZE(BURROW, 4) = {{1, 1}, {0, 1}};
 
@@ -894,29 +895,22 @@ RR_DEFINE_MAZE(BURROW, 4) = {{1, 1}, {0, 1}};
         &RR_MAZE_##MAZE[0][0]
 
 struct rr_maze_declaration RR_MAZES[rr_biome_id_max] = {
-    {MAZE_ENTRY(HELL_CREEK, 1024), 8 + 7, {
+    {MAZE_ENTRY(HELL_CREEK, 1024), 1 + 0 + 0, {
         // {-2, -2, 43, 43, 3, 31, 1}, // pvp
 
-        // hell creek
+        {0, 37, 1, 3, 0, 37, 1},   // spawn
 
-        {0, 0, 4, 2, 1, 0, 1},   // 0
-        {4, 4, 2, 2, 4, 5, 20},  // 1
-        {3, 8, 3, 2, 4, 9, 40},  // 2
-        {2, 11, 2, 2, 2, 12, 60},  // 3
-        {9, 16, 3, 2, 10, 16, 80},  // 4
-        {6, 21, 3, 3, 7, 22, 100},  // 5
-        {13,17, 2, 2, 13, 17, 120}, // 6
-        {20,12, 2, 3, 20, 13, 140}, // 7
+        // hell creek 1
 
-        // garden
+        // {4, 4, 2, 2, 4, 5, 20},  // 1
+        // {3, 8, 3, 2, 4, 9, 40},  // 2
+        // {2, 11, 2, 2, 2, 12, 60},  // 3
+        // {9, 16, 3, 2, 10, 16, 80},  // 4
+        // {6, 21, 3, 3, 7, 22, 100},  // 5
+        // {13,17, 2, 2, 13, 17, 120}, // 6
+        // {20,12, 2, 3, 20, 13, 140}, // 7
 
-        {13, 4, 3, 2, 14, 4, 20},  // 0
-        {18, 1, 2, 3, 18, 2, 40}, // 1
-        {23, 4, 3, 2, 24, 4, 60}, // 2
-        {25, 8, 2, 2, 26, 9, 80}, // 3
-        {33, 2, 3, 2, 34, 3, 100}, // 4
-        {37,11, 3, 3, 38, 12, 120}, // 5
-        {32,14, 2, 2, 33, 15, 140} // 6
+        // hell creek 2
 
     }},
     {MAZE_ENTRY(HELL_CREEK, 1024), 0},
