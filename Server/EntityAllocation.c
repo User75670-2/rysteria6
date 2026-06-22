@@ -122,7 +122,7 @@ EntityIdx rr_simulation_alloc_petal(struct rr_simulation *this, EntityIdx arena,
     {
         rr_component_physical_set_radius(physical, 15);
         physical->mass = 25 * powf(1.8, rarity);
-        physical->knockback_scale = 1000000.0f;
+        physical->knockback_scale = 100000000000000.0f;
     }
     else if (id == rr_petal_id_fireball)
         rr_component_physical_set_radius(physical, 13);

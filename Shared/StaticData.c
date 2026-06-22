@@ -308,15 +308,26 @@ struct rr_mob_rarity_scale RR_MOB_RARITY_SCALING[rr_rarity_id_max] = {
 };
 // clang-format on
 
-uint32_t RR_RARITY_COLORS[rr_rarity_id_max] = {
+uint32_t RR_RARITY_COLORS_D[rr_rarity_id_max] = {
     0xff7eef6d, 0xffffe65d, 0xff4d52e3, 0xff861fde,
     0xffde1f1f, 0xff1fdbde, 0xffff2b75, 0xff2bffa3, 
     0xff3000af, 0xffffff9f, 0xffff7500};
 
-char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
+uint32_t RR_RARITY_COLORS[rr_rarity_id_max] = {
+    0xff000000, 0xff222222, 0xff555555, 0xff777777,
+    0xff666666, 0xff111111, 0xff333333, 0xff888888,
+    0xffaaaaaa, 0xff999999, 0xff444444,
+};
+char const *RR_RARITY_NAMES_D[rr_rarity_id_max] = {
     "Common",    "Unusual", "Rare",   "Epic",
     "Legendary", "Mythic",  "Exotic", "Ancient", 
     "Eternal", "Astral", "Atomic"
+};
+char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
+    "Zezenzary", "Zazanzary", "Zezenzazy", "Zezezezy", "Zegendary",
+    "Zy",
+    "Zazazazy", "Zary", "Zezendaty", "Zazandaty",
+    "Zegendaty"
 };
 long double RR_MOB_WAVE_RARITY_COEFFICIENTS[rr_rarity_id_max + 1] = {
     0, 1, 6, 10, 15, 25, 160, 1200, 250, 100, 70, 80};              
@@ -895,20 +906,22 @@ RR_DEFINE_MAZE(BURROW, 4) = {{1, 1}, {0, 1}};
         &RR_MAZE_##MAZE[0][0]
 
 struct rr_maze_declaration RR_MAZES[rr_biome_id_max] = {
-    {MAZE_ENTRY(HELL_CREEK, 1024), 1 + 0 + 0, {
+    {MAZE_ENTRY(HELL_CREEK, 1024), 1 + 6 + 0, {
         // {-2, -2, 43, 43, 3, 31, 1}, // pvp
 
         {0, 37, 1, 3, 0, 37, 1},   // spawn
 
         // hell creek 1
 
-        // {4, 4, 2, 2, 4, 5, 20},  // 1
-        // {3, 8, 3, 2, 4, 9, 40},  // 2
-        // {2, 11, 2, 2, 2, 12, 60},  // 3
-        // {9, 16, 3, 2, 10, 16, 80},  // 4
-        // {6, 21, 3, 3, 7, 22, 100},  // 5
-        // {13,17, 2, 2, 13, 17, 120}, // 6
-        // {20,12, 2, 3, 20, 13, 140}, // 7
+        {4, 33, 3, 3, 5, 34, 20},  // 1
+        {9, 30, 3, 3, 10, 31, 40},  // 2
+        {13, 27, 4, 3, 16, 37, 60},  // 3
+        {16, 36, 2, 3, 14, 28, 60}, // 4
+        {23, 30, 2, 2, 25, 37, 80},  // 5
+        {24, 36, 3, 2, 23, 31, 80}, // 6
+        // {6, 21, 3, 3, 7, 22, 100},  // 7
+        // {13,17, 2, 2, 13, 17, 120}, // 8
+        // {20,12, 2, 3, 20, 13, 140}, // 9
 
         // hell creek 2
 

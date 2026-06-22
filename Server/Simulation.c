@@ -64,7 +64,8 @@ static void set_special_zone(uint8_t biome, uint8_t (*fun)(), uint32_t x,
 
 uint8_t fern_tree_zone()
 {
-    return rr_frand() > 0.1 ? rr_mob_id_fern : rr_mob_id_tree;
+    return rr_frand() > 0.2 ? rr_mob_id_fern :
+                            rr_frand() > 0.75 ? rr_mob_id_tree : ALL_MOBS;
 }
 uint8_t pter_meteor_zone()
 {
@@ -132,9 +133,9 @@ uint8_t pachy_rex_tree_zone() {
     return seed > 
     0.4 ? rr_mob_id_pachycephalosaurus : seed > 0.0078 ? rr_mob_id_trex : rr_mob_id_tree;
 }
-uint8_t pter_fern_trex() {
+uint8_t pter_fern_pecti() {
     float seed = rr_frand();
-    return seed > 0.25 ? rr_mob_id_pteranodon : seed > 0.1 ? rr_mob_id_trex : rr_mob_id_fern;
+    return seed > 0.3 ? rr_mob_id_pteranodon : seed > 0.15 ? rr_mob_id_pectinodon : rr_mob_id_fern;
 }
 uint8_t trex_dako_pter_zone() { 
     return rr_frand() > 0.6 ? rr_mob_id_trex : rr_frand() > 0.5 ? rr_mob_id_dakotaraptor : rr_mob_id_pteranodon; 
@@ -238,7 +239,7 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {2, 27, 7,  3, pter_meteor_zone},
     {15,32, 3,  2, old_trex_anky_zone},
     {23, 34, 4,  2, trice_dako_zone},
-    {25, 23, 3,  2, pter_fern_trex},
+    {25, 23, 3,  2, pter_fern_pecti},
     {30, 28,  3,  4, anky_zone},
     {1, 17,  3,  2, quetz_pecti_zone},
     {5, 12, 4,  3, dako_quetz_zone},
