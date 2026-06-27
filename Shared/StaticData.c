@@ -308,22 +308,22 @@ struct rr_mob_rarity_scale RR_MOB_RARITY_SCALING[rr_rarity_id_max] = {
 };
 // clang-format on
 
-uint32_t RR_RARITY_COLORS_D[rr_rarity_id_max] = {
+uint32_t RR_RARITY_COLORS[rr_rarity_id_max] = {
     0xff7eef6d, 0xffffe65d, 0xff4d52e3, 0xff861fde,
     0xffde1f1f, 0xff1fdbde, 0xffff2b75, 0xff2bffa3, 
     0xff3000af, 0xffffff9f, 0xffff7500};
 
-uint32_t RR_RARITY_COLORS[rr_rarity_id_max] = {
+uint32_t RR_RARITY_COLORS_D[rr_rarity_id_max] = {
     0xff000000, 0xff222222, 0xff555555, 0xff777777,
     0xff666666, 0xff111111, 0xff333333, 0xff888888,
     0xffaaaaaa, 0xff999999, 0xff444444,
 };
-char const *RR_RARITY_NAMES_D[rr_rarity_id_max] = {
+char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
     "Common",    "Unusual", "Rare",   "Epic",
     "Legendary", "Mythic",  "Exotic", "Ancient", 
     "Eternal", "Astral", "Atomic"
 };
-char const *RR_RARITY_NAMES[rr_rarity_id_max] = {
+char const *RR_RARITY_NAMES_D[rr_rarity_id_max] = {
     "Zezenzary", "Zazanzary", "Zezenzazy", "Zezezezy", "Zegendary",
     "Zy",
     "Zazazazy", "Zary", "Zezendaty", "Zazandaty",
