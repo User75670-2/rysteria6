@@ -792,7 +792,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 float missile_angle =
                     physical->angle + missile_angle_offset * M_PI / 180.0f;
                 struct rr_vector spawn_offset;
-                rr_vector_from_polar(&spawn_offset, 15.0f, missile_angle);
+                rr_vector_from_polar(&spawn_offset, -30.0f, missile_angle);
 
                 // spawn a missile in a spread centered on the hornet's facing direction
                 EntityIdx petal_id = rr_simulation_alloc_petal(
@@ -811,7 +811,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 physical2->mass = 5.0f;
                 physical2->knockback_scale = 2.5f * (mob->rarity + 1);
                 physical2->bearing_angle = missile_angle;
-                rr_vector_from_polar(&physical2->velocity, 1, missile_angle);
+                rr_vector_from_polar(&physical2->velocity, 100, missile_angle);
                 rr_component_petal_set_detached(
                     rr_simulation_get_petal(simulation, petal_id), 1);
                 rr_component_health_set_max_health(
@@ -841,7 +841,7 @@ if (ai->ticks_until_next_action == 0)
                 float missile_angle =
                     physical->angle + missile_angle_offset * M_PI / 180.0f;
                 struct rr_vector spawn_offset;
-                rr_vector_from_polar(&spawn_offset, 15.0f, missile_angle);
+                rr_vector_from_polar(&spawn_offset, -60.0f, missile_angle);
 
                 // spawn a missile in a spread centered on the hornet's facing direction
                 EntityIdx petal_id = rr_simulation_alloc_petal(
@@ -860,7 +860,7 @@ if (ai->ticks_until_next_action == 0)
                 physical2->mass = 5.0f;
                 physical2->knockback_scale = 2.5f * (mob->rarity + 1);
                 physical2->bearing_angle = missile_angle;
-                rr_vector_from_polar(&physical2->velocity, 1, missile_angle);
+                rr_vector_from_polar(&physical2->velocity, 100, missile_angle);
                 rr_component_petal_set_detached(
                     rr_simulation_get_petal(simulation, petal_id), 1);
                 rr_component_health_set_max_health(

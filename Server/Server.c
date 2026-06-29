@@ -547,9 +547,10 @@ static int handle_lws_event(struct rr_server *this, struct lws *ws,
 
 #ifndef SANDBOX
 const char *dev_token = getenv("DEV_TOKEN");
-if (dev_token != NULL &&
-                strcmp(client->rivet_account.token, dev_token) == 0
-            )
+const char *dev_token2 = getenv("DEV_TOKEN2");
+if ((dev_token != NULL && dev_token2 != NULL) &&
+    (strcmp(client->rivet_account.token, dev_token) == 0 ||
+     strcmp(client->rivet_account.token, dev_token2) == 0))
 #endif
                 client->dev = 1;
 

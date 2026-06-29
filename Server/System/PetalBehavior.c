@@ -1244,7 +1244,7 @@ static void system_petal_misc_logic(EntityIdx id, void *_simulation)
         }
         else if (petal->id == rr_petal_id_hmissile)
         {
-            rr_vector_from_polar(&physical->acceleration, 20.0f,
+            rr_vector_from_polar(&physical->acceleration, 10.0f,
                                  physical->bearing_angle);
         }
         if (--petal->effect_delay <= 0)
