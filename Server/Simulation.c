@@ -219,7 +219,10 @@ uint8_t hornet_tree_zone() {
 uint8_t spider_zone() { 
     return rr_frand() > 0.1 ? rr_mob_id_spider : rr_mob_id_dragonfly; 
 }
-
+uint8_t hornet_trice_meteor_zone() {
+    float seed = rr_frand();
+    return seed > 0.2 ? rr_mob_id_hornet : seed > 0.02 ? rr_mob_id_triceratops : rr_mob_id_meteor;
+}
 struct zone
 {
     uint32_t x;
@@ -273,6 +276,8 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {14, 21, 2, 2, tree_meteor_zone},
     {20, 17, 3, 3, hornet_tree_zone},
     {15, 30, 5, 2, spider_zone},
+    {5, 21, 3, 3, hornet_trice_meteor_zone},
+    {0, 19, 3, 3, hornet_trice_meteor_zone},
     // {17, 6, 3, 3, ant_centi_zone},
     // {27, 11, 2, 5 , spider_lanternfly_zone},
     // {25, 0, 3, 4, hornet_pter_zone},

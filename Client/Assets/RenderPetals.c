@@ -2756,7 +2756,7 @@ void rr_renderer_draw_petal(struct rr_renderer *renderer, uint8_t id,
             break;
         case rr_petal_id_missile:
             rr_renderer_set_fill(renderer, 0xffcdb124);
-            rr_renderer_set_stroke(renderer, 0xffa68e1a);
+            rr_renderer_set_stroke(renderer, 0xffcdb124);
             rr_renderer_set_line_width(renderer, 3.0f);
             rr_renderer_set_line_join(renderer, 1.0f);
             rr_renderer_set_line_cap(renderer, 1.0f);
@@ -2839,7 +2839,7 @@ void rr_renderer_draw_petal(struct rr_renderer *renderer, uint8_t id,
             break;
         case rr_petal_id_hmissile:
             rr_renderer_set_fill(renderer, 0xffcdb124);
-            rr_renderer_set_stroke(renderer, 0xffa68e1a);
+            rr_renderer_set_stroke(renderer, 0xffcdb124);
             rr_renderer_set_line_width(renderer, 3.0f);
             rr_renderer_set_line_join(renderer, 1.0f);
             rr_renderer_set_line_cap(renderer, 1.0f);
