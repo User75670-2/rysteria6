@@ -109,7 +109,7 @@ struct rr_petal_data RR_PETAL_DATA[rr_petal_id_max] = {
     {rr_petal_id_missile,   rr_rarity_id_rare,      offensive,  8.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_gleaf,     rr_rarity_id_legendary, offensive,  7.0f,  8.0f,   8.0f,  75,  0, {1,1,1,1,1,1,2,2,2,3,3}},
     {rr_petal_id_stick,     rr_rarity_id_rare,      offensive,  1.0f,   8.0f,   0.0f,  50,  0, {1,1,1,1,1,3,5,5,5,6,6}},
-    {rr_petal_id_hmissile,   rr_rarity_id_rare,      offensive,  8.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
+    {rr_petal_id_hmissile,   rr_rarity_id_rare,      offensive,  2.0f,   1.0f,   0.0f,  10,  5, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_obliterator,rr_rarity_id_common,   offensive, 1000000000.0f,  1000000000.0f,   0.0f,  0,  0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_eggOP,       rr_rarity_id_unusual, defensive,  1.0f,  75.0f,  10.0f,  0,0, {1,1,1,1,1,1,1,1,1,1,1}},
     {rr_petal_id_permastun,   rr_rarity_id_common,  defensive,  0.0f,  1000000000.0f,  0.0f,  0.0,  0, {1,1,1,1,1,1,1,1,1,1,1}},

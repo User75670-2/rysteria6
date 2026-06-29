@@ -776,8 +776,8 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
         if (ai->ticks_until_next_action == 0)
         {
             if (rr_simulation_get_mob(simulation, entity)->rarity >=
-                    rr_rarity_id_max &&
-                rr_frand() < 1)
+                    rr_rarity_id_exotic &&
+                rr_frand() < 0.1)
             {
                 ai->ai_state = rr_ai_state_exotic_special;
                 ai->ticks_until_next_action = 1;
@@ -811,7 +811,7 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 physical2->mass = 5.0f;
                 physical2->knockback_scale = 2.5f * (mob->rarity + 1);
                 physical2->bearing_angle = missile_angle;
-                rr_vector_from_polar(&physical2->velocity, 50, missile_angle);
+                rr_vector_from_polar(&physical2->velocity, 1, missile_angle);
                 rr_component_petal_set_detached(
                     rr_simulation_get_petal(simulation, petal_id), 1);
                 rr_component_health_set_max_health(
@@ -824,12 +824,58 @@ void tick_ai_hornet(EntityIdx entity, struct rr_simulation *simulation)
                 rr_vector_add(&physical->acceleration, &recoil);
                 missile_angle_offset += missile_angle_offset_modifier;
             }
-            ai->ticks_until_next_action = 25;
+            ai->ticks_until_next_action = 50;
         }
         break;
     }
     case rr_ai_state_exotic_special:
     {
+if (ai->ticks_until_next_action == 0)
+        {
+
+            int missile_angle_offset = 360 / 12 * -1;
+            int missile_angle_offset_modifier = 360 / 12;
+            for (int i = 0; i < 12; i++) {
+                struct rr_component_mob *mob =
+                    rr_simulation_get_mob(simulation, entity);
+                float missile_angle =
+                    physical->angle + missile_angle_offset * M_PI / 180.0f;
+                struct rr_vector spawn_offset;
+                rr_vector_from_polar(&spawn_offset, 15.0f, missile_angle);
+
+                // spawn a missile in a spread centered on the hornet's facing direction
+                EntityIdx petal_id = rr_simulation_alloc_petal(
+                    simulation, physical->arena,
+                    physical->x + spawn_offset.x,
+                    physical->y + spawn_offset.y,
+                    rr_petal_id_hmissile, mob->rarity, mob->parent_id);
+                struct rr_component_physical *physical2 =
+                    rr_simulation_get_physical(simulation, petal_id);
+                struct rr_component_health *health =
+                    rr_simulation_get_health(simulation, petal_id);
+                rr_component_physical_set_angle(physical2, missile_angle);
+                rr_component_physical_set_radius(
+                    physical2, 7.5 * RR_MOB_RARITY_SCALING[mob->rarity].radius);
+                physical2->friction = 0.75f;
+                physical2->mass = 5.0f;
+                physical2->knockback_scale = 2.5f * (mob->rarity + 1);
+                physical2->bearing_angle = missile_angle;
+                rr_vector_from_polar(&physical2->velocity, 1, missile_angle);
+                rr_component_petal_set_detached(
+                    rr_simulation_get_petal(simulation, petal_id), 1);
+                rr_component_health_set_max_health(
+                    health, 1 * RR_MOB_RARITY_SCALING[mob->rarity].health);
+                rr_component_health_set_health(health, health->max_health);
+                health->damage = 15 * RR_MOB_RARITY_SCALING[mob->rarity].damage;
+                rr_simulation_get_petal(simulation, petal_id)->effect_delay = 25;
+                struct rr_vector recoil;
+                rr_vector_from_polar(&recoil, 0, physical->angle); // recoil
+                rr_vector_add(&physical->acceleration, &recoil);
+                missile_angle_offset += missile_angle_offset_modifier;
+            }
+            ai->ai_state = rr_ai_state_attacking;
+            ai->ticks_until_next_action = 50;
+        }
         break;
     }
 
