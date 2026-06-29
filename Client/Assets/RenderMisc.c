@@ -202,11 +202,22 @@ void rr_renderer_draw_third_eye(struct rr_renderer *renderer,
     rr_renderer_context_state_free(renderer, &state);
 }
 
+// void rr_renderer_tiles_init()
+// {
+//     rr_renderer_spritesheet_init(
+//         &background_tiles, NULL, 256, 256, rr_hc_tile_1_draw, 256, 256,
+//         rr_hc_tile_2_draw, 256, 256, rr_hc_tile_3_draw, 256, 256,
+//         rr_ga_tile_1_draw, 256, 256, rr_ga_tile_2_draw, 256, 256,
+//         rr_ga_tile_3_draw, 800, 800, rr_prop_fern_draw, 800, 800,
+//         rr_prop_moss_draw, 250, 250, asset_web_draw, 700, 700, asset_nest_draw,
+//         0);
+// }
+
 void rr_renderer_tiles_init()
 {
     rr_renderer_spritesheet_init(
-        &background_tiles, NULL, 256, 256, rr_hc_tile_1_draw, 256, 256,
-        rr_hc_tile_2_draw, 256, 256, rr_hc_tile_3_draw, 256, 256,
+        &background_tiles, NULL, 256, 256, rr_ga_tile_1_draw, 256, 256,
+        rr_ga_tile_2_draw, 256, 256, rr_ga_tile_3_draw, 256, 256,
         rr_ga_tile_1_draw, 256, 256, rr_ga_tile_2_draw, 256, 256,
         rr_ga_tile_3_draw, 800, 800, rr_prop_fern_draw, 800, 800,
         rr_prop_moss_draw, 250, 250, asset_web_draw, 700, 700, asset_nest_draw,

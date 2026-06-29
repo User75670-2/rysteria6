@@ -1668,10 +1668,11 @@ void rr_game_tick(struct rr_game *this, float delta)
                                       currY + GRID_SIZE / 2);
                 rr_renderer_scale(this->renderer, (GRID_SIZE + 2) / 256);
                 if (this->selected_biome == 0)
-                    rr_renderer_draw_tile_hell_creek(this->renderer,
+                                                    rr_renderer_draw_tile_hell_creek(this->renderer,
                                                      tile_index);
                 else
-                    rr_renderer_draw_tile_garden(this->renderer, tile_index);
+                                    rr_renderer_draw_tile_garden(this->renderer, tile_index);
+
                 rr_renderer_context_state_free(this->renderer, &state);
             }
         }

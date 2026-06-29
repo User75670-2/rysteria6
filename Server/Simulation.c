@@ -65,7 +65,7 @@ static void set_special_zone(uint8_t biome, uint8_t (*fun)(), uint32_t x,
 uint8_t fern_tree_zone()
 {
     return rr_frand() > 0.2 ? rr_mob_id_fern :
-                            rr_frand() > 0.75 ? rr_mob_id_tree : ALL_MOBS;
+                            rr_frand() > 0.5 ? rr_mob_id_tree : ALL_MOBS;
 }
 uint8_t pter_meteor_zone()
 {
@@ -161,7 +161,9 @@ uint8_t dako_spider_pecti_zone() {
 }
 uint8_t garden_zone()
 {
+    if (rr_frand() < 0.85) {
     float seed = rr_frand();
+
     if ((seed -= 0.03053) < 0)
         return rr_mob_id_fern;
     if ((seed -= 0.00051) < 0)
@@ -183,6 +185,7 @@ uint8_t garden_zone()
     if ((seed -= 0.2) < 0)
         return rr_mob_id_lanternfly;
     return rr_mob_id_beehive; //0.001915
+    } else return rr_frand() < 0.5 ? rr_mob_id_triceratops : rr_mob_id_pectinodon;
 }
 uint8_t ant_centi_zone() {
     return rr_frand() > 0.2 ? rr_mob_id_ant : rr_mob_id_house_centipede;
@@ -206,6 +209,17 @@ uint8_t lanternfly_centi() {
 uint8_t dragonfly_spider() {
     return rr_frand() > 0.4 ? rr_mob_id_spider : rr_mob_id_dragonfly;
 }
+uint8_t tree_meteor_zone() {
+    return rr_frand() > 0.2 ? rr_mob_id_tree : 
+                                rr_frand() > 0.5 ? rr_mob_id_meteor : garden_zone();
+}
+uint8_t hornet_tree_zone() {
+    return rr_frand() > 0.02 ? rr_mob_id_hornet : rr_mob_id_tree;
+}
+uint8_t spider_zone() { 
+    return rr_frand() > 0.1 ? rr_mob_id_spider : rr_mob_id_dragonfly; 
+}
+
 struct zone
 {
     uint32_t x;
@@ -214,39 +228,29 @@ struct zone
     uint32_t h;
     uint8_t (*spawn_func)();
 };
-//                            garden zones    hell creek special zones    garden special zones   
-#define ZONE_POSITION_COUNT       0         +          12          +            0
 
+#define ZONE_POSITION_COUNT 100
 static struct zone zone_positions[ZONE_POSITION_COUNT] = {
 
     // garden zone
 
-    // {11, 0, 29, 6, garden_zone},
-    // {14, 6, 26, 3, garden_zone},
-    // {21, 9, 19, 3, garden_zone},
-    // {24, 12, 16, 3, garden_zone},
-    // {28, 15, 12, 2, garden_zone},
-    // {30, 17, 10, 4, garden_zone},
-    // {33, 21, 7, 19, garden_zone},
-    // {24, 27, 9, 13, garden_zone},
-    // {23, 36, 1, 4, garden_zone},
-    // {21, 29, 3, 7, garden_zone},
+    {0, 0, 40, 40, garden_zone},
 
 
     // hell creek
 
-    {2, 36, 2,  2, fern_tree_zone},
-    {2, 27, 7,  3, pter_meteor_zone},
-    {15,32, 3,  2, old_trex_anky_zone},
-    {23, 34, 4,  2, trice_dako_zone},
-    {25, 23, 3,  2, pter_fern_pecti},
-    {30, 28,  3,  4, anky_zone},
-    {1, 17,  3,  2, quetz_pecti_zone},
-    {5, 12, 4,  3, dako_quetz_zone},
-    {1, 11, 3, 5, dako_quetz_zone},
-    {13, 9, 3, 4, meteor_pter_anky},
-    {38, 21,  2,  4, pter_edmo_zone},
-    {26, 19, 2, 3, trice_quetz_fern},
+    // {2, 36, 2,  2, fern_tree_zone},
+    // {2, 27, 7,  3, pter_meteor_zone},
+    // {15,32, 3,  2, old_trex_anky_zone},
+    // {23, 34, 4,  2, trice_dako_zone},
+    // {25, 23, 3,  2, pter_fern_pecti},
+    // {30, 28,  3,  4, anky_zone},
+    // {1, 17,  3,  2, quetz_pecti_zone},
+    // {5, 12, 4,  3, dako_quetz_zone},
+    // {1, 11, 3, 5, dako_quetz_zone},
+    // {13, 9, 3, 4, meteor_pter_anky},
+    // {38, 21,  2,  4, pter_edmo_zone},
+    // {26, 19, 2, 3, trice_quetz_fern},
 
 
     // // {37, 4, 3,  2, trex_anky_zone},
@@ -266,6 +270,9 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
 
     //     // garden
 
+    {14, 21, 2, 2, tree_meteor_zone},
+    {20, 17, 3, 3, hornet_tree_zone},
+    {15, 30, 5, 2, spider_zone},
     // {17, 6, 3, 3, ant_centi_zone},
     // {27, 11, 2, 5 , spider_lanternfly_zone},
     // {25, 0, 3, 4, hornet_pter_zone},
