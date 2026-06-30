@@ -223,6 +223,27 @@ uint8_t hornet_trice_meteor_zone() {
     float seed = rr_frand();
     return seed > 0.2 ? rr_mob_id_hornet : seed > 0.02 ? rr_mob_id_triceratops : rr_mob_id_meteor;
 }
+uint8_t ant_bee_zone() {
+    return rr_frand() > 0.4 ? rr_mob_id_ant : rr_mob_id_honeybee;
+}
+uint8_t pecti_zone() {
+    return rr_frand() > 0.5 ? rr_mob_id_pectinodon : garden_zone();
+}
+uint8_t spider_fern_ant_zone() {
+    return rr_frand() > 0.5 ? rr_mob_id_spider :
+                                rr_frand() > 0.2 ? rr_mob_id_ant : rr_mob_id_fern;
+}
+uint8_t centi_pecti_spider_hornet_zone() {
+    float seed = rr_frand();
+    return seed > 0.75 ? rr_mob_id_house_centipede : 
+            seed > 0.5 ? rr_mob_id_pectinodon : 
+            seed > 0.25 ? rr_mob_id_spider : rr_mob_id_hornet;
+}
+uint8_t hornet_spider_meteor_zone() {
+    float seed = rr_frand();
+    return seed > 0.4 ? rr_mob_id_spider : 
+            seed > 0.005 ? rr_mob_id_hornet : rr_mob_id_meteor;
+}
 struct zone
 {
     uint32_t x;
@@ -278,6 +299,12 @@ static struct zone zone_positions[ZONE_POSITION_COUNT] = {
     {15, 30, 5, 2, spider_zone},
     {5, 21, 3, 3, hornet_trice_meteor_zone},
     {0, 19, 3, 3, hornet_trice_meteor_zone},
+    {22, 24, 2, 2, ant_bee_zone},
+    {30, 22, 2, 3, pecti_zone},
+    {24, 35, 4, 3, spider_fern_ant_zone},
+    {11, 36, 3, 3, hornet_bee_beehive_zone},
+    {33, 7, 3, 3, centi_pecti_spider_hornet_zone},
+    {37, 19, 3, 4, hornet_spider_meteor_zone},
     // {17, 6, 3, 3, ant_centi_zone},
     // {27, 11, 2, 5 , spider_lanternfly_zone},
     // {25, 0, 3, 4, hornet_pter_zone},

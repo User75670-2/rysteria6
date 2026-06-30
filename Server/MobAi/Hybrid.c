@@ -919,7 +919,7 @@ void tick_ai_dragonfly(EntityIdx entity, struct rr_simulation *simulation)
 
         rr_component_physical_set_angle(physical, target_angle);
 
-        rr_vector_from_polar(&accel, RR_PLAYER_SPEED * 1.5, physical->angle);
+        rr_vector_from_polar(&accel, RR_PLAYER_SPEED * 1.4, physical->angle);
         rr_vector_add(&physical->acceleration, &accel);
         ai->ticks_until_next_action = 10;
         if (rr_vector_magnitude_cmp(&delta, 22 + physical->radius) == -1)
