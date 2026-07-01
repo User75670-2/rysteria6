@@ -475,7 +475,7 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
                           rr_ui_text_init(" Spider", 12, 0xffffffff), NULL),
                       -1, 0));
     }
-    else if (id == rr_petal_id_house_centipede_egg) 
+    else if (id == rr_petal_id_hcenti_egg) 
     {
         rr_ui_container_add_element(
             this, rr_ui_set_justify(
@@ -692,7 +692,7 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
                                   rr_ui_text_init("Stun: ", 12, 0xff4266f5),
                                   rr_ui_text_init(extra, 12, 0xffffffff), NULL),
                               -1, 0));
-    } else if (id == rr_petal_id_permastun_obtainable)
+    } else if (id == rr_petal_id_permastun)
     {
         char *extra = malloc((sizeof *extra) * 8);
         sprintf(extra, "%.1fs",
@@ -707,7 +707,7 @@ struct rr_ui_element *rr_ui_petal_tooltip_init(uint8_t id, uint8_t rarity)
                                     RR_RARITY_COLORS[rarity <= rr_rarity_id_max - 2 ? rarity + 1 : rr_rarity_id_max - 1]),
                                     rr_ui_text_init("", 12, 0xffffffff), NULL),
                                      -1, 0));
-    } else if (id == rr_petal_id_permastun) {
+    } else if (id == rr_petal_id_permastun_dev) {
         char *extra = malloc((sizeof *extra) * 8);
         sprintf(extra, "%.1fs",
                 1 + sqrtf(RR_PETAL_RARITY_SCALE[rarity].heal) / 3);

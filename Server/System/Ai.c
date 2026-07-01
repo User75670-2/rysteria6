@@ -130,7 +130,7 @@ static void system_for_each(EntityIdx entity, void *simulation)
                                       (1.4 - mob->rarity * 0.05));
         break;
     case rr_mob_id_lanternfly:
-        tick_ai_default(entity, this, RR_PLAYER_SPEED);
+        tick_ai_lanternfly(entity, this);
         break;
     case rr_mob_id_pectinodon:
         tick_ai_pectinodon(entity, this);

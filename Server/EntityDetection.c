@@ -322,10 +322,12 @@ uint8_t high_zone_filter(struct rr_simulation *simulation, EntityIdx seeker,
     if (mob->rarity < rr_rarity_id_ultimate)
         return 1;                                         
     int whichRarity = mob->rarity == rr_rarity_id_ultimate 
-    ? 40 // m
+    ? 24 // e
     : mob->rarity == rr_rarity_id_eternal 
-    ? 48 // x
-    : 56; // a
+    ? 32 // l
+    : mob->rarity == rr_rarity_id_astral
+    ? 40 // m
+    : 48; // x
     struct rr_component_physical *physical =
         rr_simulation_get_physical(simulation, seeker);
     struct rr_component_arena *arena =

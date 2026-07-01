@@ -297,7 +297,7 @@ static void system_velocity(EntityIdx id, void *simulation)
          rr_simulation_get_petal(simulation, id)->id != rr_petal_id_honeybee_egg &&
          rr_simulation_get_petal(simulation, id)->id != rr_petal_id_beehive_egg &&
          rr_simulation_get_petal(simulation, id)->id != rr_petal_id_spider_egg &&
-         rr_simulation_get_petal(simulation, id)->id != rr_petal_id_house_centipede_egg &&
+         rr_simulation_get_petal(simulation, id)->id != rr_petal_id_hcenti_egg &&
          rr_simulation_get_petal(simulation, id)->id != rr_petal_id_lanternfly_egg &&
          rr_simulation_get_petal(simulation, id)->id != rr_petal_id_pecti_egg &&
          rr_simulation_get_petal(simulation, id)->id != rr_petal_id_eggOP &&

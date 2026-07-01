@@ -843,7 +843,7 @@ system_egg_hatching_logic(struct rr_simulation *simulation,
     {
         m_id = rr_mob_id_spider;
         m_rar = petal->rarity >= 1 ? petal->rarity - 1 : 0;
-    } else if (petal->id == rr_petal_id_house_centipede_egg)
+    } else if (petal->id == rr_petal_id_hcenti_egg)
     {
         m_id = rr_mob_id_house_centipede;
         m_rar = petal->rarity;
@@ -1134,7 +1134,7 @@ static void rr_system_petal_reload_foreach_function(EntityIdx id,
                     data->id == rr_petal_id_honeybee_egg ||
                     data->id == rr_petal_id_beehive_egg ||
                     data->id == rr_petal_id_spider_egg ||
-                    data->id == rr_petal_id_house_centipede_egg ||
+                    data->id == rr_petal_id_hcenti_egg ||
                     data->id == rr_petal_id_lanternfly_egg ||
                     data->id == rr_petal_id_pecti_egg ||
                     data->id == rr_petal_id_eggOP ||

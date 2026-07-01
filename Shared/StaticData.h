@@ -162,7 +162,7 @@ enum rr_petal_id
     rr_petal_id_wax,       // 30
     rr_petal_id_sand,      // 31
     rr_petal_id_mint,      // 32
-    rr_petal_id_permastun_obtainable, // 53
+    rr_petal_id_permastun, // 53
     rr_petal_id_rice,      // 54
     rr_petal_id_missile,   // 55
     rr_petal_id_gleaf,    // 56
@@ -174,11 +174,11 @@ enum rr_petal_id
     // dev cheats (petals form)
     rr_petal_id_obliterator, // 59
     rr_petal_id_eggOP, // 60
-    rr_petal_id_permastun, // 61
+    rr_petal_id_permastun_dev, // 61
     rr_petal_id_superfling, // 62
     
     // buggy
-    rr_petal_id_house_centipede_egg, // 49
+    rr_petal_id_hcenti_egg, // 49
 
 
     rr_petal_id_max,       // 63

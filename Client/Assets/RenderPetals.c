@@ -668,7 +668,7 @@ void rr_renderer_draw_petal(struct rr_renderer *renderer, uint8_t id,
             rr_renderer_fill(renderer);
             rr_renderer_stroke(renderer);
             break;
-        case rr_petal_id_house_centipede_egg:
+        case rr_petal_id_hcenti_egg:
             rr_renderer_set_stroke(renderer, 0xff65532a);
             rr_renderer_set_fill(renderer,   0xff85734a);
             rr_renderer_set_line_width(renderer, 3);
@@ -1820,7 +1820,7 @@ void rr_renderer_draw_petal(struct rr_renderer *renderer, uint8_t id,
             rr_renderer_fill(renderer);
             rr_renderer_scale(renderer, 1 / 0.1);
             break;
-        case rr_petal_id_permastun:
+        case rr_petal_id_permastun_dev:
             rr_renderer_scale(renderer, 0.1);
             rr_renderer_set_fill(renderer, 0xfffef054);
             rr_renderer_begin_path(renderer);
@@ -1884,7 +1884,7 @@ void rr_renderer_draw_petal(struct rr_renderer *renderer, uint8_t id,
             rr_renderer_fill(renderer);
             rr_renderer_scale(renderer, 1 / 0.1);
             break;
-        case rr_petal_id_permastun_obtainable:
+        case rr_petal_id_permastun:
             rr_renderer_scale(renderer, 0.1);
             rr_renderer_set_fill(renderer, 0xff6ef0f4);
             rr_renderer_begin_path(renderer);
@@ -2885,9 +2885,9 @@ void rr_renderer_draw_static_petal(struct rr_renderer *renderer, uint8_t id,
             rr_renderer_rotate(renderer, 0.5f);
         else if (id == rr_petal_id_beak)
             rr_renderer_rotate(renderer, 1.0f);
-        else if (id == rr_petal_id_permastun)
+        else if (id == rr_petal_id_permastun_dev)
             rr_renderer_rotate(renderer, 1.0f);
-        else if (id == rr_petal_id_permastun_obtainable)
+        else if (id == rr_petal_id_permastun)
             rr_renderer_rotate(renderer, 1.0f);
         else if (id == rr_petal_id_lightning)
             rr_renderer_rotate(renderer, 1.0f);
